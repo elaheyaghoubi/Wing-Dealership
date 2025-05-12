@@ -1,7 +1,11 @@
+import Header from '../src/Components/Shared/Header.jsx'
+import './index.css'
 
 function App() {
   return (
-   <div>App</div>
+   <div>
+     <Header />
+   </div>
   )
 }
 
