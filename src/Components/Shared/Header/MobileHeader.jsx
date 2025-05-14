@@ -2,8 +2,12 @@ import React from 'react'
 import {useState} from "react";
 import {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {filterCars, selectCurrentFilter, selectFilteredCars} from '../../Features/carSlice.js';
-const MobileHeader = ({showProfile, onClickShowProfile, showMenu, onClickShowMenu}) => {
+import {filterCars, selectCurrentFilter, selectFilteredCars} from '../../../Features/carSlice.js';
+
+
+const MobileHeader = () => {
+    const [showProfile, setShowProfile] = useState(false)
+    const [showMenu, setShowMenu] = useState(false)
     const dispatch = useDispatch();
     const filteredCars = useSelector(selectFilteredCars);
     const filterCategory = useSelector(selectCurrentFilter);
@@ -34,10 +38,18 @@ const MobileHeader = ({showProfile, onClickShowProfile, showMenu, onClickShowMen
 
     ]
     const [showFilteredCars, setShowFilteredCars] = useState(false)
+
     const onClickShowCars = (item) => {
         dispatch(filterCars(item))
         setShowFilteredCars(true)
         console.log(showFilteredCars)
+    }
+
+    const onClickShowProfile = () => {
+        setShowProfile(!showProfile)
+    }
+    const onClickShowMenu = () => {
+        setShowMenu(!showMenu)
     }
 
     return (
@@ -56,7 +68,7 @@ const MobileHeader = ({showProfile, onClickShowProfile, showMenu, onClickShowMen
                 font-bold
                    ${showFilteredCars? "hidden" : "block"} 
                     `}>
-                    My Toyota
+                    Wing Dealership
                 </div>
                 {showFilteredCars  && (
                     <div className={" transition-all duration-500 ease-in-out font-bold"}>
@@ -194,14 +206,19 @@ const MobileHeader = ({showProfile, onClickShowProfile, showMenu, onClickShowMen
                             <div className={"w-[250px] h-[250px] bg-amber-100"}>
                             </div>
                         </div>
-                      <div className={"flex flex-col items-start gap-1 my-4"}>
-                          <div className={"font-bold text-xl"}>
-                              {item.model}
-                          </div>
-                          <div className={"font-semibold"}>
-                              $ {item.price}* Starting MSRP
-                          </div>
-                      </div>
+                        <div className={"flex flex-col items-start gap-1 my-4"}>
+                            <div className={"flex gap-1 items-center"}>
+                                <div className={"font-semibold"}>
+                                    {item.brand}
+                                </div>
+                                <div className={"text-[0.7rem] text-center"}>
+                                    {item.model}
+                                </div>
+                            </div>
+                            <div className={"font-semibold"}>
+                                $ {item.price}* Starting MSRP
+                            </div>
+                        </div>
 
                         <hr/>
                     </div>
@@ -211,28 +228,4 @@ const MobileHeader = ({showProfile, onClickShowProfile, showMenu, onClickShowMen
     )
 }
 
-const DesktopHeader = () => (
-    <div className={"lg:block hidden"}>
-        Desktop
-    </div>
-)
-
-function Header() {
-    const [showProfile, setShowProfile] = useState(false)
-    const [showMenu, setShowMenu] = useState(false)
-
-    const onClickShowProfile = () => {
-        setShowProfile(!showProfile)
-    }
-    const onClickShowMenu = () => {
-        setShowMenu(!showMenu)
-    }
-    return (
-        <div>
-            <MobileHeader showMenu={showMenu} showProfile={showProfile} onClickShowProfile={onClickShowProfile} onClickShowMenu={onClickShowMenu} />
-            <DesktopHeader/>
-        </div>
-    )
-}
-
-export default Header
+export default MobileHeader;
