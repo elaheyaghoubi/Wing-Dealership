@@ -36,7 +36,7 @@ const VehicleContent = () => {
         dispatch(filterCars(category));
     }
 
-    return (<div className={"flex justify-between p-4"}>
+    return (<div className={"flex justify-between p-4 bg-white"}>
         <div className={"px-4"}>
             <div className={"text-[1.3rem] font-bold flex flex-col items-start justify-start"}>
                 {["Electric/Hybrid", "SUV", "Sedan", "Sports", "Truck"].map((item, index) => (<div
@@ -72,7 +72,7 @@ const VehicleContent = () => {
     </div>)
 };
 const ShoppingContent = () => (
-    <div className={"flex justify-between p-7"}>
+    <div className={"flex justify-between p-7 bg-white"}>
         <div className={"w-[60%]"}>
             <div className={"tracking-[0.05px] "}>
                 <div className={"font-semibold text-[1.1rem] tracking-[0.05px]"}>Find Your Vehicle</div>
@@ -212,7 +212,7 @@ const ShoppingContent = () => (
         </div>
     </div>)
 const OwnersContent = () => (
-    <div className={"flex justify-between p-7"}>
+    <div className={"flex justify-between p-7 bg-white"}>
         <div className={"w-[60%]"}>
             <div className={"tracking-[0.05px] "}>
                 <div className={"font-semibold text-[1.1rem] tracking-[0.05px]"}>Owners Resources</div>
