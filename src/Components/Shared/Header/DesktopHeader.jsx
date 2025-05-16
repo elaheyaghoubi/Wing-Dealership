@@ -406,11 +406,7 @@ const DesktopHeader = () => {
                 setShowProfile(false);
             }
         };
-
-        // Add event listener when component mounts
         document.addEventListener('mousedown', handleClickOutside);
-
-        // Clean up event listener when component unmounts
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };

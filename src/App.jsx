@@ -4,7 +4,7 @@ import HomePage from "./Components/HomePage/HomePage.jsx";
 
 function App() {
     return (
-        <div>
+        <div >
             <Header/>
             <HomePage/>
         </div>

@@ -54,7 +54,7 @@ const MobileHeader = () => {
 
     return (
         <div>
-            <div className={"lg:hidden flex items-center justify-between p-6"}>
+            <div className={"lg:hidden flex items-center justify-between p-6 relative w-full bg-white"}>
                 <div className={""}>
                     < svg onClick={()=>{setShowFilteredCars(false)}} width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.968994" width="41.1676" height="40" fill="#EB0A1E"></rect>
@@ -107,7 +107,7 @@ const MobileHeader = () => {
                 </div>
             </div>
             <hr/>
-            <div className={`h-[86.5vh] flex justify-between flex-col
+            <div className={`h-[100vh] flex justify-between flex-col
               ${showProfile ? "block" : "hidden"} `}>
                 <div>
                     {profileMenu.map((item) => (
