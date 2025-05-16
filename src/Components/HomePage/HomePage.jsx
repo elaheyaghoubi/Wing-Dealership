@@ -177,11 +177,12 @@ const Explore = () => {
                     </button>
                 </div>
                 <div className={"flex items-center gap-10 justify-center mt-8"}>
-                    <button className={"rounded-4xl border-2 p-3 px-7"}>
-                        <div className={"font-semibold text-sm cursor-pointer"}>
-                            Explore All Vehicles
-                        </div>
-                    </button>
+
+                        <button className={"rounded-4xl border-2 p-3 px-7"}>
+                            <div className={"font-semibold text-sm cursor-pointer"}>
+                                Explore All Vehicles
+                            </div>
+                        </button>
                     <button className={"flex items-center hover:cursor-pointer"}>
                         <div className={"font-semibold text-sm "}>
                             Search Inventory

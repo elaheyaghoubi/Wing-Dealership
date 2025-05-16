@@ -1,7 +1,8 @@
 import React from 'react'
+import {Link} from "react-router-dom";
 
 function CarCard({car, index}) {
-    const {year, model, brand, price, engine} = car
+    const {id, year, model, brand, price, engine} = car
     const colors = [
         '#3c2c2a', '#394344', '#2b5b59', '#a6afaf', '#5d4e41', '#2b5b59', '#43512f', '#676770', '#25363b'
     ]
@@ -35,7 +36,9 @@ function CarCard({car, index}) {
                         </div>
                     </div>
                     <div className={"flex items-center text-xs font-semibold gap-4"}>
-                        <button className={"bg-white rounded-3xl text-black px-5 py-2  cursor-pointer"}>Explore</button>
+                        <Link to={`car/${id}`}>
+                            <button className={"bg-white rounded-3xl text-black px-5 py-2  cursor-pointer"}>Explore</button>
+                        </Link>
                         <button className={"flex items-center  cursor-pointer "}>
                             <div>
                                 Build
