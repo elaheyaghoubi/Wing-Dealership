@@ -3,6 +3,7 @@ import {useState, useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchCars, filterCars, selectFilteredCars} from "../../Features/carSlice.js";
 import CarCard from "./CarCard.jsx";
+import {Link} from "react-router-dom";
 
 const Slider = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -177,15 +178,18 @@ const Explore = () => {
                     </button>
                 </div>
                 <div className={"flex items-center gap-1 justify-center mt-8"}>
-                    <button className="rounded-4xl border-2 p-3 px-2 flex items-center justify-center group  transition-colors duration-200 w-full max-w-xs ">
-                        <div className="font-semibold text-sm cursor-pointer flex items-center justify-center transform group-hover:-translate-x-2 transition-transform duration-200">
-                            Explore All Vehicles
-                        </div>
-                        <div className="w-0 opacity-0 group-hover:w-6 group-hover:opacity-100 group-hover:ml-2 transition-all duration-200 overflow-hidden">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10.5 15L13.5 12L10.5 9" stroke="#151515" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                        </div>
+                    <button className="rounded-4xl border-2 p-3 px-2 flex items-center justify-center group  transition-colors duration-400 w-full max-w-xs ">
+                        <Link to={"/all-vehicles"}     className="flex items-center justify-center w-full text-inherit no-underline"
+                        >
+                            <div className="font-semibold text-sm cursor-pointer flex items-center justify-center transform group-hover:-translate-x-2 transition-transform duration-200">
+                                Explore All Vehicles
+                            </div>
+                            <div className="w-0 opacity-0 group-hover:w-6 group-hover:opacity-100 group-hover:ml-2 transition-all duration-400 overflow-hidden">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.5 15L13.5 12L10.5 9" stroke="#151515" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                            </div>
+                        </Link>
                     </button>
                     <button className="relative rounded-4xl  p-3 px-2 flex items-center justify-center group hover:text-gray-500 transition-all duration-200 w-full max-w-xs ">
                         <div className="font-semibold text-sm cursor-pointer flex items-center justify-center gap-2">

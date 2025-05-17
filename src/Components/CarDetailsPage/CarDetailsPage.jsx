@@ -13,7 +13,6 @@ function CarDetailsPage() {
 
     const car = filteredCars.find(car => car.id === +id);
 
-    // If car is not found, show a message
     if (!car) {
         return <div className="p-8 text-center text-xl">Car not found</div>;
     }

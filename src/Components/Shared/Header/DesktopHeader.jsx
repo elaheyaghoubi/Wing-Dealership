@@ -4,6 +4,7 @@ import {filterCars, selectCurrentFilter, selectFilteredCars} from "../../../Feat
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
+
 const Vehicle = ({vehicle}) => {
     const {image, model, brand, price} = vehicle;
     return (<div
@@ -29,9 +30,10 @@ const VehicleContent = () => {
     const filterCategory = useSelector(selectCurrentFilter);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(filterCars("Electric/Hybrid"))
-    }, [])
+    // dispatch(filterCars("Electric/Hybrid"))
+    // useEffect(() => {
+    //     dispatch(filterCars("Electric/Hybrid"))
+    // }, [])
 
     const onClickShowCars = (category) => {
         dispatch(filterCars(category));
@@ -400,30 +402,30 @@ const DesktopHeader = () => {
     const [showProfile, setShowProfile] = useState(false)
     const [showHeaderMenu, setShowHeaderMenu] = useState(true)
 
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            // Check if the clicked element is outside the div
-            if (divRef.current && !divRef.current.contains(event.target)) {
-                setShowProfile(false);
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
-    const getLinePositions = () => {
-        if (activeItemPosition === null) return null;
+    // useEffect(() => {
+    //     const handleClickOutside = (event) => {
+    //         // Check if the clicked element is outside the div
+    //         if (divRef.current && !divRef.current.contains(event.target)) {
+    //             setShowProfile(false);
+    //         }
+    //     };
+    //     document.addEventListener('mousedown', handleClickOutside);
+    //     return () => {
+    //         document.removeEventListener('mousedown', handleClickOutside);
+    //     };
+    // }, []);
+    // const getLinePositions = () => {
+    //     if (activeItemPosition === null) return null;
+    //
+    //     const positions = [{right: "37%"},  // Vehicles
+    //         {right: "24%"},  // Shopping
+    //         {right: "11%"}    // Owners
+    //     ];
+    //
+    //     return positions[activeItemPosition];
+    // };
 
-        const positions = [{right: "37%"},  // Vehicles
-            {right: "24%"},  // Shopping
-            {right: "11%"}    // Owners
-        ];
-
-        return positions[activeItemPosition];
-    };
-
-    const linePositions = getLinePositions();
+    // const linePositions = getLinePositions();
 
     const handleItemClick = (item, index) => {
         setActiveItem(activeItem === item ? null : item);

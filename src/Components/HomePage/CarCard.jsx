@@ -37,7 +37,31 @@ function CarCard({car, index}) {
                     </div>
                     <div className={"flex items-center text-xs font-semibold gap-4"}>
                         <Link to={`car/${id}`}>
-                            <button className={"bg-white rounded-3xl text-black px-5 py-2  cursor-pointer"}>Explore</button>
+                            <button className="w-24 bg-white text-black rounded-2xl cursor-pointer flex items-center justify-center group transition-colors duration-300 px-3 py-1.5">
+                                <div className="font-medium text-xs flex items-center justify-center">
+    <span className="transition-transform duration-200 transform group-hover:-translate-x-1 ml-3">
+      Explore
+    </span>
+                                    <span className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+      <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+            d="M10.5 15L13.5 12L10.5 9"
+            stroke="#151515"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+      </svg>
+    </span>
+                                </div>
+                            </button>
+
                         </Link>
                         <button className={"flex items-center  cursor-pointer "}>
                             <div>
