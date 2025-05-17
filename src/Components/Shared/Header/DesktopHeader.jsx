@@ -2,6 +2,7 @@ import React from "react";
 import {useState, useEffect, useRef} from "react";
 import {filterCars, selectCurrentFilter, selectFilteredCars} from "../../../Features/carSlice.js";
 import {useDispatch, useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
 const Vehicle = ({vehicle}) => {
     const {image, model, brand, price} = vehicle;
@@ -442,9 +443,11 @@ const DesktopHeader = () => {
                               fill="white"></path>
                     </svg>
                 </div>
-                <div>
-                    Wing Dealership
-                </div>
+                <Link to={"/"}>
+                    <div>
+                        Wing Dealership
+                    </div>
+                </Link>
             </div>
             <div className={"flex justify-center gap-4 items-center text-[0.8rem] "}>
                 {['Vehicles', 'Shopping', 'Owners'].map((item, index) => (
@@ -464,7 +467,7 @@ const DesktopHeader = () => {
                             </svg>
                         </div>
                     </div>
-                    {activeItem === item && showHeaderMenu && (<div className="absolute top-[4rem] left-0 w-full">
+                    {activeItem === item && showHeaderMenu && (<div className="z-[99999] absolute top-[4rem] left-0 w-full">
                         {item === 'Vehicles' && <VehicleContent/>}
                         {item === 'Shopping' && <ShoppingContent/>}
                         {item === 'Owners' && <OwnersContent/>}
@@ -532,12 +535,7 @@ const DesktopHeader = () => {
         </div>
 
         <div className={"w-full h-[1px] bg-gray-200 relative"}>
-            {linePositions && showHeaderMenu && (<>
-                <div
-                    className={"bg-orange-600 h-[1px] w-[10%] absolute transition-all duration-300"}
-                    style={{right: linePositions.right}}
-                />
-            </>)}
+
         </div>
 
     </div>);
