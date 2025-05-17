@@ -1,6 +1,6 @@
 import React from "react";
 import {useState, useEffect, useRef} from "react";
-import {filterCars, selectCurrentFilter, selectFilteredCars} from "../../../Features/carSlice.js";
+import {filterAndSortCars, selectCurrentFilter, selectDisplayedCars} from "../../../Features/carSlice.js";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
@@ -26,17 +26,18 @@ const Vehicle = ({vehicle}) => {
     </div>)
 }
 const VehicleContent = () => {
-    const filteredCars = useSelector(selectFilteredCars);
+    const filteredCars = useSelector(selectDisplayedCars);
     const filterCategory = useSelector(selectCurrentFilter);
     const dispatch = useDispatch();
 
     // dispatch(filterCars("Electric/Hybrid"))
-    // useEffect(() => {
-    //     dispatch(filterCars("Electric/Hybrid"))
-    // }, [])
+    useEffect(() => {
+        dispatch(filterAndSortCars({ filter: "SUV", sort: "a-z" }));
+    }, [])
 
     const onClickShowCars = (category) => {
-        dispatch(filterCars(category));
+        dispatch(filterAndSortCars({ filter: category, sort: "a-z" }));
+
     }
 
     return (<div className={"flex justify-between p-4 bg-white"}>

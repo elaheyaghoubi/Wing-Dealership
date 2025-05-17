@@ -213,9 +213,6 @@ const carData = [
       color: "Baja Storm", image: "https://example.com/cars/nissan-frontier.jpg",
   category: "Truck"
     },
-  
-    ,// SPORTS CARS
-
     {
       id: 36, model: "Corvette Stingray", brand: "Chevrolet", year: 2023, price: 65900,
       class: "Sports", engine: "6.2L V8", horsepower: 495, mileage: 19,
@@ -276,8 +273,6 @@ const carData = [
       color: "Turbo Blue", image: "https://example.com/cars/audi-ttrs.jpg",
   category: "Sports"
     },
-  
-    ,// ELECTRIC/HYBRID
 
     {
       id: 46, model: "Model 3", brand: "Tesla", year: 2023, price: 42990,

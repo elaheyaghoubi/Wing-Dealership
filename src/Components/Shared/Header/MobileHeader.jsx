@@ -2,14 +2,14 @@ import React from 'react'
 import {useState} from "react";
 import {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {filterCars, selectCurrentFilter, selectFilteredCars} from '../../../Features/carSlice.js';
+import {filterAndSortCars, selectCurrentFilter, selectDisplayedCars} from '../../../Features/carSlice.js';
 
 
 const MobileHeader = () => {
     const [showProfile, setShowProfile] = useState(false)
     const [showMenu, setShowMenu] = useState(false)
     const dispatch = useDispatch();
-    const filteredCars = useSelector(selectFilteredCars);
+    const filteredCars = useSelector(selectDisplayedCars);
     const filterCategory = useSelector(selectCurrentFilter);
     const [showVehicles, setShowVehicles] = useState(false);
     const profileMenu = [
@@ -40,7 +40,7 @@ const MobileHeader = () => {
     const [showFilteredCars, setShowFilteredCars] = useState(false)
 
     const onClickShowCars = (item) => {
-        dispatch(filterCars(item))
+        dispatch(filterAndSortCars({ filter: item, sort: "a-z" }));
         setShowFilteredCars(true)
         console.log(showFilteredCars)
     }

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {useState, useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchCars, filterCars, selectFilteredCars} from "../../Features/carSlice.js";
+import {filterAndSortCars, selectDisplayedCars} from "../../Features/carSlice.js";
 import CarCard from "./CarCard.jsx";
 import {Link} from "react-router-dom";
 
@@ -48,7 +48,7 @@ const Slider = () => {
 
 const Explore = () => {
     const dispatch = useDispatch();
-    const filteredCars = useSelector(selectFilteredCars);
+    const filteredCars = useSelector(selectDisplayedCars);
     const [currentItem, setCurrentItem] = useState(1);
     const [currentIndex, setCurrentIndex] = useState(0);
     const carouselRef = useRef(null);
@@ -68,7 +68,9 @@ const Explore = () => {
     const onClickChangeCategory = (index) => {
         setCurrentItem(index);
         const vehicleTypes = ["Electric/Hybrid", "SUV", "Sedan", "Sports", "Truck"];
-        dispatch(filterCars(vehicleTypes[index]));
+        // dispatch(filterCars(vehicleTypes[index]));
+        dispatch(filterAndSortCars({ filter: vehicleTypes[index], sort: "a-z" }));
+
         setCurrentIndex(0);
     };
 
@@ -107,8 +109,9 @@ const Explore = () => {
         }
     };
     useEffect(() => {
-        dispatch(filterCars("SUV"));
-    }, []);
+        dispatch(filterAndSortCars({ filter: "SUV", sort: "a-z" }));
+
+    }, [dispatch]);
 
     return (
         <div className="HomePage-explore mt-8">

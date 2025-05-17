@@ -1,17 +1,17 @@
 import React from 'react'
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {filterCars, selectFilteredCars} from "../../Features/carSlice.js";
+import {filterAndSortCars, selectDisplayedCars, selectAllCars} from "../../Features/carSlice.js";
 
 function CarDetailsPage() {
     const {id} = useParams();
     const dispatch = useDispatch();
-    const filteredCars = useSelector(selectFilteredCars);
+    const cars = useSelector(selectAllCars);
     const colors = [
         '#3c2c2a', '#394344', '#2b5b59', '#a6afaf', '#5d4e41', '#2b5b59', '#43512f', '#676770', '#25363b'
     ]
 
-    const car = filteredCars.find(car => car.id === +id);
+    const car = cars.find(car => car.id === +id);
 
     if (!car) {
         return <div className="p-8 text-center text-xl">Car not found</div>;
