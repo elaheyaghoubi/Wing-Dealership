@@ -6,7 +6,7 @@ function VehicleCard({car}) {
     const {id, year, model, brand, price} = car || {};
 
     return (
-        <div className={"VehicleCard bg-white flex flex-col p-7 border-1 rounded-sm border-gray-200"}>
+        <div className={"VehicleCard bg-white flex flex-col p-7 border-1 rounded-sm border-gray-200 hover:shadow-xl cursor-pointer"}>
             <div className={"bg-amber-100 h-30"}>
                 {/*image*/}
             </div>

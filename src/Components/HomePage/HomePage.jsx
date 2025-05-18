@@ -1,8 +1,10 @@
 import React, {useEffect} from 'react'
 import {useState, useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {filterAndSortCars, selectDisplayedCars} from "../../Features/carSlice.js";
-import CarCard from "./CarCard.jsx";
+import {
+    applyFilters,
+    selectDisplayedCars, setPriceFilter, setCategoryFilter, setSortOption
+} from "../../Features/carSlice.js";import CarCard from "./CarCard.jsx";
 import {Link} from "react-router-dom";
 
 const Slider = () => {
@@ -69,7 +71,9 @@ const Explore = () => {
         setCurrentItem(index);
         const vehicleTypes = ["Electric/Hybrid", "SUV", "Sedan", "Sports", "Truck"];
         // dispatch(filterCars(vehicleTypes[index]));
-        dispatch(filterAndSortCars({ filter: vehicleTypes[index], sort: "a-z" }));
+        dispatch(setSortOption("a-z"))
+        dispatch(setCategoryFilter(vehicleTypes[index]))
+        dispatch(applyFilters());
 
         setCurrentIndex(0);
     };
@@ -109,7 +113,9 @@ const Explore = () => {
         }
     };
     useEffect(() => {
-        dispatch(filterAndSortCars({ filter: "SUV", sort: "a-z" }));
+        dispatch(setSortOption("a-z"))
+        dispatch(setCategoryFilter("SUV"))
+        dispatch(applyFilters());
 
     }, [dispatch]);
 

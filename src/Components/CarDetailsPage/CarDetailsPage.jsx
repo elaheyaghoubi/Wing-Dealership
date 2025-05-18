@@ -1,7 +1,7 @@
 import React from 'react'
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {filterAndSortCars, selectDisplayedCars, selectAllCars} from "../../Features/carSlice.js";
+import { selectAllCars} from "../../Features/carSlice.js";
 
 function CarDetailsPage() {
     const {id} = useParams();

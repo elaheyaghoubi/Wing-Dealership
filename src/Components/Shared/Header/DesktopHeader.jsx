@@ -1,6 +1,9 @@
 import React from "react";
 import {useState, useEffect, useRef} from "react";
-import {filterAndSortCars, selectCurrentFilter, selectDisplayedCars} from "../../../Features/carSlice.js";
+import {
+    applyFilters,
+    selectDisplayedCars, setPriceFilter, setCategoryFilter, setSortOption, selectCurrentFilterCategory
+} from "../../../Features/carSlice.js";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
@@ -27,16 +30,21 @@ const Vehicle = ({vehicle}) => {
 }
 const VehicleContent = () => {
     const filteredCars = useSelector(selectDisplayedCars);
-    const filterCategory = useSelector(selectCurrentFilter);
+    const filterCategory = useSelector(selectCurrentFilterCategory);
     const dispatch = useDispatch();
 
     // dispatch(filterCars("Electric/Hybrid"))
     useEffect(() => {
-        dispatch(filterAndSortCars({ filter: "SUV", sort: "a-z" }));
+        dispatch(setSortOption("a-z"))
+        dispatch(setCategoryFilter("SUV"))
+        dispatch(applyFilters());
+        // dispatch(applyFilters({ filter: "SUV", sort: "a-z" }));
     }, [])
 
     const onClickShowCars = (category) => {
-        dispatch(filterAndSortCars({ filter: category, sort: "a-z" }));
+        dispatch(setSortOption("a-z"))
+        dispatch(setCategoryFilter(category))
+        dispatch(applyFilters());
 
     }
 
@@ -58,7 +66,9 @@ const VehicleContent = () => {
             </div>
             <div>
                 <div className={"flex text-[0.6rem] items-center font-bold mt-1"}>
-                    <div>View All Vehicles</div>
+                    <Link to={"/all-vehicles"}>
+                        <div>View All Vehicles</div>
+                    </Link>
                     <div>
                         <svg className={"-rotate-90"} width="20" height="20" viewBox="0 0 50 50" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
