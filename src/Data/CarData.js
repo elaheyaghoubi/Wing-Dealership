@@ -14,7 +14,7 @@ const carData = [
   category: "Sedan"
     },
     {
-      id: 3, model: "3 Series", brand: "BMW", year: 2023, price: 43900,
+      id: 3, model: "3 Series", brand: "BMW", year: 2024, price: 43900,
       class: "Sedan", engine: "2.0L Turbo", horsepower: 255, mileage: 29,
       color: "Mineral Gray", image: "https://example.com/cars/bmw-3series.jpg",
   category: "Sedan"
@@ -38,7 +38,7 @@ const carData = [
   category: "Sedan"
     },
     {
-      id: 7, model: "Malibu", brand: "Chevrolet", year: 2023, price: 24900,
+      id: 7, model: "Malibu", brand: "Chevrolet", year: 2022, price: 24900,
       class: "Sedan", engine: "1.5L Turbo", horsepower: 160, mileage: 34,
       color: "Pacific Blue", image: "https://example.com/cars/chevrolet-malibu.jpg",
   category: "Sedan"
@@ -56,7 +56,7 @@ const carData = [
   category: "Sedan"
     },
     {
-      id: 10, model: "Mazda6", brand: "Mazda", year: 2023, price: 25900,
+      id: 10, model: "Mazda6", brand: "Mazda", year: 2021, price: 25900,
       class: "Sedan", engine: "2.5L Turbo", horsepower: 227, mileage: 29,
       color: "Soul Red", image: "https://example.com/cars/mazda6.jpg",
   category: "Sedan"
@@ -70,7 +70,7 @@ const carData = [
   category: "SUV"
     },
     {
-      id: 12, model: "CR-V", brand: "Honda", year: 2023, price: 31900,
+      id: 12, model: "CR-V", brand: "Honda", year: 2020, price: 31900,
       class: "SUV", engine: "1.5L Turbo", horsepower: 190, mileage: 34,
       color: "Sonic Gray", image: "https://example.com/cars/honda-crv.jpg",
   category: "SUV"
@@ -88,49 +88,49 @@ const carData = [
   category: "SUV"
     },
     {
-      id: 15, model: "X5", brand: "BMW", year: 2023, price: 65900,
+      id: 15, model: "X5", brand: "BMW", year: 2021, price: 65900,
       class: "SUV", engine: "3.0L Turbo", horsepower: 335, mileage: 24,
       color: "Phytonic Blue", image: "https://example.com/cars/bmw-x5.jpg",
   category: "SUV"
     },
     {
-      id: 16, model: "GLE", brand: "Mercedes", year: 2023, price: 58900,
+      id: 16, model: "GLE", brand: "Mercedes", year: 2022, price: 58900,
       class: "SUV", engine: "2.0L Turbo", horsepower: 255, mileage: 23,
       color: "Polar White", image: "https://example.com/cars/mercedes-gle.jpg",
   category: "SUV"
     },
     {
-      id: 17, model: "Q5", brand: "Audi", year: 2023, price: 45900,
+      id: 17, model: "Q5", brand: "Audi", year: 2024, price: 45900,
       class: "SUV", engine: "2.0L Turbo", horsepower: 261, mileage: 26,
       color: "Daytona Gray", image: "https://example.com/cars/audi-q5.jpg",
   category: "SUV"
     },
     {
-      id: 18, model: "Rogue", brand: "Nissan", year: 2023, price: 28900,
+      id: 18, model: "Rogue", brand: "Nissan", year: 2024, price: 28900,
       class: "SUV", engine: "1.5L Turbo", horsepower: 201, mileage: 33,
       color: "Boulder Gray", image: "https://example.com/cars/nissan-rogue.jpg",
   category: "SUV"
     },
     {
-      id: 19, model: "Model Y", brand: "Tesla", year: 2023, price: 49990,
+      id: 19, model: "Model Y", brand: "Tesla", year: 2020, price: 49990,
       class: "SUV", engine: "Dual Motor AWD", horsepower: 384, mileage: 131,
       color: "Pearl White", image: "https://example.com/cars/tesla-modely.jpg",
   category: "SUV"
     },
     {
-      id: 20, model: "Cayenne", brand: "Porsche", year: 2023, price: 72900,
+      id: 20, model: "Cayenne", brand: "Porsche", year: 2022, price: 72900,
       class: "SUV", engine: "3.0L Turbo", horsepower: 335, mileage: 21,
       color: "Jet Black", image: "https://example.com/cars/porsche-cayenne.jpg",
   category: "SUV"
     },
     {
-      id: 21, model: "Highlander", brand: "Toyota", year: 2023, price: 38900,
+      id: 21, model: "Highlander", brand: "Toyota", year: 2024, price: 38900,
       class: "SUV", engine: "3.5L V6", horsepower: 295, mileage: 24,
       color: "Ruby Flare", image: "https://example.com/cars/toyota-highlander.jpg",
   category: "SUV"
     },
     {
-      id: 22, model: "Pilot", brand: "Honda", year: 2023, price: 39900,
+      id: 22, model: "Pilot", brand: "Honda", year: 2021, price: 39900,
       class: "SUV", engine: "3.5L V6", horsepower: 280, mileage: 22,
       color: "Modern Steel", image: "https://example.com/cars/honda-pilot.jpg",
   category: "SUV"
@@ -142,7 +142,7 @@ const carData = [
   category: "SUV"
     },
     {
-      id: 24, model: "Traverse", brand: "Chevrolet", year: 2023, price: 34900,
+      id: 24, model: "Traverse", brand: "Chevrolet", year: 2022, price: 34900,
       class: "SUV", engine: "3.6L V6", horsepower: 310, mileage: 20,
       color: "Cherry Red", image: "https://example.com/cars/chevrolet-traverse.jpg",
   category: "SUV"

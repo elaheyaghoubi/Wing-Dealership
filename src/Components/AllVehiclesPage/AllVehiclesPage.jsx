@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {
     applyFilters,
-    selectDisplayedCars, setPriceFilter, setCategoryFilter, setSortOption, resetFilters
+    selectDisplayedCars, setPriceFilter, setCategoryFilter, setSortOption, resetFilters, setYearFilter
 } from "../../Features/carSlice.js";
 import VehicleCard from "./VehicleCard.jsx";
 import Select from 'react-select';
@@ -12,6 +12,7 @@ const FilterSectionDesktop = () => {
     const vehicleTypes = ["Electric/Hybrid", "SUV", "Sedan", "Sports", "Truck"];
     const dispatch = useDispatch();
     const [selectedVehicle, setSelectedVehicle] = useState(null);
+    const [selectedYear, setSelectedYear] = useState(null);
     const [showFilter, setShowFilter] = useState(["vehicles", "year", "price"]);
     const [sliderValue, setSliderValue] = useState([20000, 180000]);
 
@@ -26,12 +27,19 @@ const FilterSectionDesktop = () => {
         dispatch(applyFilters())
 
     };
-    const onChangeApplyFilter = (e) => {
+    const onChangeApplyFilter = (e, filter) => {
         const {value, checked} = e.target;
-        console.log(e.target.value);
-        dispatch(setCategoryFilter(e.target.value))
-        dispatch(applyFilters())
-        setSelectedVehicle(checked ? value : null);
+        if(filter === "vehicles"){
+            console.log(e.target.value);
+            dispatch(setCategoryFilter(e.target.value))
+            dispatch(applyFilters())
+            setSelectedVehicle(checked ? value : null);
+        }else if(filter === "year"){
+            // console.log(+e.target.value);
+            setSelectedYear(checked ? +value : null);
+            dispatch(setYearFilter(value))
+            dispatch(applyFilters())
+        }
     };
 
     const onClickShowFilterOptions = (category) => {
@@ -79,7 +87,7 @@ const FilterSectionDesktop = () => {
                                                 name="vehicleType"
                                                 value={vehicle}
                                                 checked={selectedVehicle === vehicle}
-                                                onChange={onChangeApplyFilter}
+                                                onChange={(event) => onChangeApplyFilter(event,"vehicles")}
                                                 className="custom-checkbox focus:ring-black focus:ring-offset-0"
                                             />
                                             <span className="ml-2 text-gray-700">{vehicle}</span>
@@ -112,7 +120,7 @@ const FilterSectionDesktop = () => {
                     </div>
                     {
                         showFilter.includes("price") &&
-                        <div>
+                        <div className={"mb-3"}>
                             <Slider value={sliderValue} setValue={handleSetValue}/>
                             <div className={"mt-3 flex justify-between items-center"}>
                                 <div className={"border-1 w-1/2 h-15 relative "}>
@@ -132,6 +140,49 @@ const FilterSectionDesktop = () => {
                         </div>
 
                     }
+                    <hr/>
+                </div>
+                <div className="filterSectionDesktop-years-section">
+                    <div
+                        className={"flex justify-between items-center my-3"}
+                        onClick={() => onClickShowFilterOptions("years")}
+                    >
+                        <div className={" hover:border-gray-600 cursor-pointer border-b-2 border-transparent"}>Year
+                        </div>
+                        {!showFilter.includes("year") &&
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5L12 19" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M19 12H5" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>}
+                        {showFilter.includes("year") &&
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 12H5" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        }
+                    </div>
+                    <div>
+                        {
+                            showFilter.includes("year") &&
+                            <form className={"flex flex-col"} action="">
+                                {
+                                    [2020, 2021, 2022, 2023, 2024].map((year, index) => (
+                                        <label key={index} className="inline-flex items-center font-semibold p-1">
+                                            <input
+                                                type="checkbox"
+                                                name="years"
+                                                value={year}
+                                                checked={selectedYear === year}
+                                                onChange={(event) => onChangeApplyFilter(event, "year")}
+                                                className="custom-checkbox focus:ring-black focus:ring-offset-0"
+                                            />
+                                            <span className="ml-2 text-gray-700">{year}</span>
+                                        </label>
+                                    ))
+                                }
+                            </form>
+                        }
+                    </div>
+
                 </div>
 
             </div>
@@ -198,10 +249,10 @@ function AllVehiclesPage() {
                                         control: (baseStyles, state) => ({
                                             ...baseStyles,
                                             border: "none",
-                                            borderBottom: state.isFocused ? '2px solid black' : '1px solid black', // gray-300
+                                            borderBottom: state.isFocused ? '2px solid black' : '1px solid black',
 
                                             padding: '0.5rem',
-                                            boxShadow: 'none', // focus:ring-2 focus:ring-blue-500
+                                            boxShadow: 'none',
                                             '&:hover': {
                                                 borderWidth: '2px',
                                                 cursor: 'pointer',

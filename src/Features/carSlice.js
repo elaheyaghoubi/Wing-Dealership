@@ -7,6 +7,7 @@ const initialState = {
     filters: {
         category: null,
         price: { min: null, max: null },
+        year: null
     },
     sort: "a-z",
 };
@@ -30,6 +31,9 @@ const carSlice = createSlice({
         setCategoryFilter: (state, action) => {
             state.filters.category = action.payload;
         },
+        setYearFilter: (state, action) => {
+            state.filters.year = action.payload;
+        },
         setSortOption: (state, action) => {
             state.sort = action.payload;
         },
@@ -45,6 +49,10 @@ const carSlice = createSlice({
             const filterConditions = [];
             if (state.filters.category && state.filters.category !== "All") {
                 filterConditions.push(car => car.category === state.filters.category);
+            }
+            if (state.filters.year && state.filters.year !== "All") {
+                console.log(state.filters.year);
+                filterConditions.push(car => car.year === +state.filters.year);
             }
             if (state.filters.price.min !== null) {
                 filterConditions.push(car => car.price >= state.filters.price.min);
@@ -76,12 +84,14 @@ export const {
     setCategoryFilter,
     setSortOption,
     resetFilters,
-    applyFilters
+    applyFilters,
+    setYearFilter
 } = carSlice.actions;
 
 export const selectAllCars = (state) => state.cars.cars;
 export const selectDisplayedCars = (state) => state.cars.displayedCars;
 export const selectCurrentFilterCategory = (state) => state.cars.filters.category;
+export const selectCurrentFilterYear = (state) => state.cars.filters.year;
 export const selectCurrentFilterPrice = (state) => state.cars.filters.price;
 export const selectCurrentSort = (state) => state.cars.sort;
 
