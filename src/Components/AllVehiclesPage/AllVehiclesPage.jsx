@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {
     applyFilters,
-    selectDisplayedCars, setPriceFilter, setCategoryFilter, setSortOption
+    selectDisplayedCars, setPriceFilter, setCategoryFilter, setSortOption, resetFilters
 } from "../../Features/carSlice.js";
 import VehicleCard from "./VehicleCard.jsx";
 import Select from 'react-select';
@@ -13,7 +13,7 @@ const FilterSectionDesktop = () => {
     const dispatch = useDispatch();
     const [selectedVehicle, setSelectedVehicle] = useState(null);
     const [showFilter, setShowFilter] = useState(["vehicles", "year", "price"]);
-    const [sliderValue, setSliderValue] = useState([10000, 100000]);
+    const [sliderValue, setSliderValue] = useState([20000, 180000]);
 
     const handleSetValue = (newValue) => {
         if (newValue[0] >= newValue[1]) {
@@ -23,6 +23,7 @@ const FilterSectionDesktop = () => {
         }
 
         dispatch(setPriceFilter({min: sliderValue[0], max: sliderValue[1]}))
+        dispatch(applyFilters())
 
     };
     const onChangeApplyFilter = (e) => {
@@ -157,6 +158,7 @@ function AllVehiclesPage() {
 
     useEffect(() => {
         dispatch(setSortOption("a-z"))
+        dispatch(resetFilters())
         dispatch(applyFilters());
 
     }, [dispatch]);

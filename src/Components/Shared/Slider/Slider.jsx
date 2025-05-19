@@ -8,8 +8,8 @@ function Slider({value, setValue}) {
     return (
         <div>
             <RangeSlider
-                min={10000}
-                max={100000}
+                min={20000}
+                max={180000}
                 value={value}
                 onInput={setValue}
                 step={500}
