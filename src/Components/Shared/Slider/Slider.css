@@ -8,6 +8,7 @@
 }
  .range-slider__range[data-active] {
     /* CSS for active (actively being dragged) range */
+     
 }
  .range-slider__thumb {
     /* CSS for thumbs */
