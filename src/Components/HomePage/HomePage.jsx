@@ -4,7 +4,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {
     applyFilters,
     selectDisplayedCars, setPriceFilter, setCategoryFilter, setSortOption
-} from "../../Features/carSlice.js";import CarCard from "./CarCard.jsx";
+} from "../../Features/carSlice.js";
+import CarCard from "./CarCard.jsx";
 import {Link} from "react-router-dom";
 
 const Slider = () => {
@@ -47,7 +48,6 @@ const Slider = () => {
         </div>
     )
 }
-
 const Explore = () => {
     const dispatch = useDispatch();
     const filteredCars = useSelector(selectDisplayedCars);
@@ -112,6 +112,35 @@ const Explore = () => {
             });
         }
     };
+    const containerRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            }
+        );
+
+        if (containerRef.current) {
+            observer.observe(containerRef.current);
+        }
+
+        return () => {
+            if (containerRef.current) {
+                observer.unobserve(containerRef.current);
+            }
+        };
+    }, []);
+
     useEffect(() => {
         dispatch(setSortOption("a-z"))
         dispatch(setCategoryFilter("SUV"))
@@ -120,7 +149,10 @@ const Explore = () => {
     }, [dispatch]);
 
     return (
-        <div className="HomePage-explore mt-8">
+        <div
+            ref={containerRef}
+            className="HomePage-explore mt-8"
+        >
             <div className="font-semibold text-[1.5rem] text-center">Explore All Vehicles</div>
             <div>
                 <div className="flex text-[0.8rem] font-semibold text-center items-center justify-center mt-3">
@@ -186,28 +218,37 @@ const Explore = () => {
                         </div>
                     </button>
                 </div>
-                <div className={"flex items-center gap-1 justify-center mt-8"}>
-                    <button className="rounded-4xl border-2 p-3 px-2 flex items-center justify-center group  transition-colors duration-400 w-full max-w-xs ">
-                        <Link to={"/all-vehicles"}     className="flex items-center justify-center w-full text-inherit no-underline"
+                <div className={"flex lg:flex-row flex-col  items-center gap-1 justify-center mt-8"}>
+                    <button
+                        className="rounded-4xl border-2 w-1/2  p-3 px-2 flex items-center justify-center group  transition-colors duration-400 lg:w-full max-w-xs ">
+                        <Link to={"/all-vehicles"}
+                              className="flex items-center justify-center w-full text-inherit no-underline"
                         >
-                            <div className="font-semibold text-sm cursor-pointer flex items-center justify-center transform group-hover:-translate-x-2 transition-transform duration-200">
+                            <div
+                                className="font-semibold text-sm cursor-pointer flex items-center justify-center transform group-hover:-translate-x-2 transition-transform duration-200">
                                 Explore All Vehicles
                             </div>
-                            <div className="w-0 opacity-0 group-hover:w-6 group-hover:opacity-100 group-hover:ml-2 transition-all duration-400 overflow-hidden">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10.5 15L13.5 12L10.5 9" stroke="#151515" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <div
+                                className="w-0 opacity-0 group-hover:w-6 group-hover:opacity-100 group-hover:ml-2 transition-all duration-400 overflow-hidden">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.5 15L13.5 12L10.5 9" stroke="#151515" strokeWidth="1.5"
+                                          strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
                             </div>
                         </Link>
                     </button>
-                    <button className="relative rounded-4xl  p-3 px-2 flex items-center justify-center group hover:text-gray-500 transition-all duration-200 w-full max-w-xs ">
+                    <button
+                        className="relative rounded-4xl w-1/2  p-3 px-2 flex items-center justify-center group hover:text-gray-500 transition-all duration-200 lg:w-full max-w-xs ">
                         <div className="font-semibold text-sm cursor-pointer flex items-center justify-center gap-2">
                             <div className="group-hover:-translate-x-2 transition-transform duration-200 ">
                                 Search Inventory
                             </div>
                             <div className="transition-all duration-200 ">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10.5 15L13.5 12L10.5 9" stroke="#151515" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.5 15L13.5 12L10.5 9" stroke="#151515" strokeWidth="1.5"
+                                          strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
                             </div>
                         </div>
@@ -218,13 +259,133 @@ const Explore = () => {
         </div>
     );
 };
+const Tools = () => {
+    const containerRef = useRef(null);
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            }
+        );
+
+        if (containerRef.current) {
+            observer.observe(containerRef.current);
+        }
+
+        return () => {
+            if (containerRef.current) {
+                observer.unobserve(containerRef.current);
+            }
+        };
+    }, []);
+
+    return (
+        <div
+            ref={containerRef}
+            className="homePage-tools-container flex flex-col justify-center items-center mt-15 w-full opacity-0 translate-y-10 transition-all duration-700 ease-out"
+        >
+            <div className="homePage-tools-header text-center text-[1.5rem] font-semibold">
+                Shopping Tools
+            </div>
+            <div className="homePage-tools-content font-bold rounded-lg mt-5 bg-gray-100 p-6 lg:gap-0 gap-6 lg:px-20 lg:w-[70%] grid place-items-center grid-cols-2 items-center lg:flex lg:justify-between lg:items-center">
+                <div className="flex items-center justify-around flex-1">
+                    <div className="flex flex-col-reverse items-center justify-between">
+                        <div className="hover:border-black transition ease-in-out duration-500 cursor-pointer border-b-2 border-transparent">
+                            Build & Price
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 32 32">
+                            <rect width="32" height="32" fill="none"/>
+                            <line x1="14" y1="22" x2="14" y2="29" fill="none" stroke="#000" strokeMiterlimit="10"
+                                  strokeWidth="2"/>
+                            <line x1="18" y1="22" x2="18" y2="29" fill="none" stroke="#000" strokeMiterlimit="10"
+                                  strokeWidth="2"/>
+                            <rect x="14" y="3" width="4" height="4" fill="#eb0a1e"/>
+                            <path
+                                d="M21,21a7,7,0,1,1-8.45-11,1,1,0,0,1,1.5.87V17h4V10.81a1,1,0,0,1,1.5-.87A7,7,0,0,1,21,21Z"
+                                fill="none" stroke="#000" strokeMiterlimit="10" strokeWidth="2" fillRule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div className="w-[1px] lg:self-stretch bg-gray-400"></div>
+                </div>
+                <div className="flex items-center justify-around flex-1">
+                    <div className="flex flex-col-reverse items-center justify-between">
+                        <div className="hover:border-black transition ease-in-out duration-500 cursor-pointer border-b-2 border-transparent">
+                            Search Inventory
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 32 32">
+                            <rect width="32" height="32" fill="none"/>
+                            <path d="M17,8a6,6,0,1,1-6,6,6,6,0,0,1,6-6m0-2a8,8,0,1,0,8,8,8,8,0,0,0-8-8Z"/>
+                            <line x1="3" y1="27" x2="12" y2="18.64" fill="none" stroke="#000" strokeMiterlimit="10"
+                                  strokeWidth="2"/>
+                            <rect x="28" y="13" width="2" height="2"/>
+                            <rect x="4" y="13" width="2" height="2"/>
+                            <rect x="15" y="12" width="4" height="4" fill="#eb0a1e"/>
+                        </svg>
+                    </div>
+                    <div className="w-[1px] lg:self-stretch bg-gray-400"></div>
+                </div>
+                <div className="flex items-center justify-around flex-1">
+                    <div className="flex flex-col-reverse items-center justify-between">
+                        <div className="hover:border-black transition ease-in-out duration-500 cursor-pointer border-b-2 border-transparent">
+                            Special Offers
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 32 32">
+                            <rect width="32" height="32" fill="none"/>
+                            <rect x="3" y="13" width="20" height="12" fill="none" stroke="#000" strokeMiterlimit="10"
+                                  strokeWidth="2"/>
+                            <rect x="11" y="17" width="4" height="4" fill="#eb0a1e"/>
+                            <path d="M6.82,13A2.77,2.77,0,0,1,7,14a3,3,0,0,1-3,3,2.77,2.77,0,0,1-1-.18" fill="none"
+                                  stroke="#000" strokeMiterlimit="10" strokeWidth="2"/>
+                            <path d="M6.82,25A2.77,2.77,0,0,0,7,24a3,3,0,0,0-3-3,2.77,2.77,0,0,0-1,.18" fill="none"
+                                  stroke="#000" strokeMiterlimit="10" strokeWidth="2"/>
+                            <path d="M19.18,13A2.77,2.77,0,0,0,19,14a3,3,0,0,0,3,3,2.77,2.77,0,0,0,1-.18" fill="none"
+                                  stroke="#000" strokeMiterlimit="10" strokeWidth="2"/>
+                            <path d="M19.18,25A2.77,2.77,0,0,1,19,24a3,3,0,0,1,3-3,2.77,2.77,0,0,1,1,.18" fill="none"
+                                  stroke="#000" strokeMiterlimit="10" strokeWidth="2"/>
+                            <polyline points="7 13 7 7 29 7 29 19 23 19" fill="none" stroke="#000"
+                                      strokeMiterlimit="10"
+                                      strokeWidth="2"/>
+                        </svg>
+                    </div>
+                    <div className="w-[1px] lg:self-stretch bg-gray-400"></div>
+                </div>
+                <div className="flex items-center justify-around flex-1">
+                    <div className="flex flex-col-reverse items-center justify-between">
+                        <div className="hover:border-black transition ease-in-out duration-500 cursor-pointer border-b-2 border-transparent">
+                            Find a Dealer
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 32 32">
+                            <rect width="32" height="32" fill="none"/>
+                            <path
+                                d="M10.69,17.05c-1.52-1.82-2.17-2.91-2.19-4.91a7,7,0,0,1,2.22-5.09,7.84,7.84,0,0,1,10.57,0,7,7,0,0,1,2.21,5.09c0,2-.67,3.09-2.23,4.95L16,23Z"
+                                fill="none" stroke="#000" strokeMiterlimit="10" strokeWidth="2"/>
+                            <rect x="14" y="10" width="4" height="4" fill="#eb0a1e"/>
+                            <polyline points="14 21 10 21 5 28 27 28 22 21 18 21" fill="none" stroke="#000"
+                                      strokeMiterlimit="10" strokeWidth="2"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 function HomePage() {
     return (
         <div className={"HomePage-container"}>
             <Slider/>
             <Explore/>
+            <Tools/>
         </div>
     )
 }

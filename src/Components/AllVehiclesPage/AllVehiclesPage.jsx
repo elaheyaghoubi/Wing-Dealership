@@ -252,7 +252,6 @@ function AllVehiclesPage() {
     };
     return (
         <div>
-            {+showFilterSection}
             <div className={"AllVehiclesPage-header text-center mt-9"}>
                 <div className={"text-5xl font-bold"}>Vehicles</div>
                 <div className={"text-l mt-4"}>Find your perfect vehicle. Narrow it down by price, mpg or whatever you
@@ -292,15 +291,15 @@ function AllVehiclesPage() {
                                                 },
                                                 borderRadius: '0px',
                                                 minWidth: '200px',
-                                                backgroundColor: 'transparent', // gray-50
+                                                backgroundColor: 'transparent',
                                             }),
                                             singleValue: (baseStyles) => ({
                                                 ...baseStyles,
-                                                color: '#111827', // gray-900
+                                                color: '#111827',
                                             }),
                                             placeholder: (baseStyles) => ({
                                                 ...baseStyles,
-                                                color: '#6b7280', // gray-500
+                                                color: '#6b7280',
                                             }),
                                             menu: (baseStyles) => ({
                                                 ...baseStyles,
@@ -308,14 +307,14 @@ function AllVehiclesPage() {
                                             option: (baseStyles, state) => ({
                                                 ...baseStyles,
                                                 backgroundColor: state.isSelected
-                                                    ? 'black' // Selected option background
+                                                    ? 'black'
                                                     : state.isFocused
-                                                        ? '#f9fafb' // Hovered option background
-                                                        : 'white', // Default background
-                                                color: state.isSelected ? 'white' : '#111827', // Text color
+                                                        ? '#f9fafb'
+                                                        : 'white',
+                                                color: state.isSelected ? 'white' : '#111827',
                                                 padding: '8px 12px',
                                                 '&:active': {
-                                                    backgroundColor: '#e5e7eb', // Click effect
+                                                    backgroundColor: '#e5e7eb',
                                                 },
                                             }),
                                         }}
