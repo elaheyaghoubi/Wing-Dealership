@@ -133,7 +133,7 @@ function Footer() {
                         fill="black"></path>
                 </svg>
             </div>
-           <div className={"flex justify-between mt-8 items-start mb-8"}>
+           <div className={"flex justify-between mt-8 items-start "}>
                {
                    navSections.map((section, index) => (
                        <div key={index} className="">
@@ -157,7 +157,6 @@ function Footer() {
                    ))
                }
            </div>
-            <hr/>
         </div>
     )
 }

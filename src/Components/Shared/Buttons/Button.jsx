@@ -1,13 +1,13 @@
 import React from 'react'
 
 
-function Button({text, width, backgroundColor, hoverBackgroundColor, textColor, px, py}) {
+function Button({text, width, backgroundColor, hoverBackgroundColor, textColor, px, py, font}) {
     return (
         <div>
             <button
                 className={`w-${width} bg-${backgroundColor} hover:bg-${hoverBackgroundColor} text-${textColor} rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 px-${px} py-${py}`}>
                 <div className="font-medium text-xs flex items-center justify-center">
-    <span className="transition-transform duration-200 transform group-hover:-translate-x-1 ml-3">
+    <span className={`transition-transform  duration-200 transform group-hover:-translate-x-1 ml-3 ${font}`}>
       {text}
     </span>
                     <span

@@ -3,10 +3,11 @@ import {useState, useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {
     applyFilters,
-    selectDisplayedCars, setPriceFilter, setCategoryFilter, setSortOption
+    selectDisplayedCars, setPriceFilter, setCategoryFilter, setSortOption, resetFilters
 } from "../../Features/carSlice.js";
 import CarCard from "./CarCard.jsx";
 import {Link} from "react-router-dom";
+import Button from "../Shared/Buttons/Button.jsx";
 
 const Slider = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -57,6 +58,7 @@ const Explore = () => {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
+        dispatch(resetFilters())
         const checkIfMobile = () => {
             setIsMobile(window.innerWidth < 768);
         };
@@ -379,13 +381,30 @@ const Tools = () => {
         </div>
     );
 };
+const BeyondZero = () => {
+    return(
+        <div className={"mt-10 relative"}>
+            <div>
+                <img src="../src/assets/BZ_5120_2489_v2_desktop_p0otu5rLxmyrwsBnkbfNnHP4DcA9GLL.png" alt=""/>
+            </div>
+            <div className={"absolute text-white z-10 top-1/5 text-center w-full"}>
+                <div className={"font-thin text-3xl tracking-widest"}>BEYOND ZERO</div>
+                <div className={"font-semibold text-3xl"}>Drive change your way.</div>
+                <div className={"w-full text-center flex justify-center mt-5 font-bold"}>
+                    <Button px={3} py={3} text={"Explore Beyond Zero"}  backgroundColor={"white"} hoverBackgroundColor={"gray-200"} textColor={"black"} font={"font-semibold"}/>
 
+                </div>
+            </div>
+        </div>
+    )
+}
 function HomePage() {
     return (
         <div className={"HomePage-container"}>
             <Slider/>
             <Explore/>
             <Tools/>
+            <BeyondZero/>
         </div>
     )
 }
