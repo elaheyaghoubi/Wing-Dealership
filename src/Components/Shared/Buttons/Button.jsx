@@ -1,11 +1,11 @@
 import React from 'react'
-import {Link} from "react-router-dom";
 
-function Button({text, width}) {
+
+function Button({text, width, backgroundColor, hoverBackgroundColor, textColor, px, py}) {
     return (
         <div>
             <button
-                className={`w-${width} bg-white hover:bg-gray-200 text-black rounded-2xl cursor-pointer flex items-center justify-center group transition-colors duration-300 px-3 py-1.5`}>
+                className={`w-${width} bg-${backgroundColor} hover:bg-${hoverBackgroundColor} text-${textColor} rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 px-${px} py-${py}`}>
                 <div className="font-medium text-xs flex items-center justify-center">
     <span className="transition-transform duration-200 transform group-hover:-translate-x-1 ml-3">
       {text}
@@ -21,7 +21,7 @@ function Button({text, width}) {
       >
         <path
             d="M10.5 15L13.5 12L10.5 9"
-            stroke="#151515"
+            stroke={`${textColor}`}
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"

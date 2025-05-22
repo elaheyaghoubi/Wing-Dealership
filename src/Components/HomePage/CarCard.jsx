@@ -38,7 +38,7 @@ function CarCard({car, index}) {
                     </div>
                     <div className={"flex items-center text-xs font-semibold gap-4"}>
                         <Link to={`car/${id}`}>
-                            <Button text={"Explore"} width={24}/>
+                            <Button px={3} py={1.5} text={"Explore"} width={24} backgroundColor={"white"} hoverBackgroundColor={"gray-200"} textColor={"black"} />
                         </Link>
                         <button className={"flex items-center  cursor-pointer "}>
                             <div>
