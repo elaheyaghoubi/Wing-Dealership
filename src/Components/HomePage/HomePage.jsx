@@ -157,11 +157,11 @@ const Explore = () => {
         >
             <div className="font-semibold text-[1.5rem] text-center">Explore All Vehicles</div>
             <div>
-                <div className="flex text-[0.8rem] font-semibold text-center items-center justify-center mt-3">
+                <div className="flex text-[0.8rem]  text-center items-center justify-center mt-3">
                     {["Electric/Hybrid", "SUV", "Sedan", "Sports", "Truck"].map((item, index) => (
                         <div
                             className={`border-b-[2px] p-2 transition-colors duration-300 ${
-                                currentItem === index ? "border-b-black" : "border-b-gray-400"
+                                currentItem === index ? "border-b-black font-semibold" : "border-b-gray-400"
                             }`}
                             key={index}
                         >
@@ -501,19 +501,52 @@ const Gallery = () => {
 
     const currentSlide = slides[currentSlideIndex];
 
+    const containerRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            }
+        );
+
+        if (containerRef.current) {
+            observer.observe(containerRef.current);
+        }
+
+        return () => {
+            if (containerRef.current) {
+                observer.unobserve(containerRef.current);
+            }
+        };
+    }, []);
+
+
     return (
-        <div className="transition-all duration-700 ease-out">
-            <div style={{ backgroundColor }} className="p-10 transition ease-in-out duration-500">
+        <div ref={containerRef} className="opacity-0 translate-y-10 transition-all duration-700 ease-out">
+            <div style={{backgroundColor}} className="p-10 transition ease-in-out duration-500">
                 <div className="flex justify-center flex-col items-center mt-10">
                     <div className="text-white font-bold text-[2rem] transition ease-in-out duration-500">
                         {currentSlide.text}
                     </div>
-                    <button className="my-5 bg-white hover:bg-gray-200 text-black rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 px-4 py-3">
+                    <button
+                        className="my-5 bg-white hover:bg-gray-200 text-black rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 px-4 py-3">
                         <div className="font-semibold text-xs flex items-center justify-center">
-                            <span className="transition-transform text-lg duration-200 transform group-hover:-translate-x-1 ml-3 font-semibold">
+                            <span
+                                className="transition-transform text-lg duration-200 transform group-hover:-translate-x-1 ml-3 font-semibold">
                                 {currentSlide.buttonText}
                             </span>
-                            <span className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span
+                                className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                 <svg
                                     width="25"
                                     height="25"
@@ -545,17 +578,83 @@ const Gallery = () => {
 };
 const Discover = () => {
     const [currentItem, setCurrentItem] = useState(1);
+    const data = [
+        {
+            id: 0,
+            header: {
+                text: 'FEATURED STORIES',
+                content: 'Schedule Toyota Service'
+            },
+            content: 'Sign-in and schedule a service appointment online at one of our dealers.',
+            button: 'Schedule Now'
+        },
+        {
+            id: 1,
+            header: {
+                text: 'FEATURED STORIES',
+                content: 'Toyota Brand'
+            },
+            content: 'Inspired by what’s possible.',
+            button: 'Learn More'
+        },
+        {
+            id: 2,
+            header: {
+                text: 'OFFERS & SERVICES',
+                content: 'Let’s talk finances',
+            },
+            content: 'We have options for flexible financing and leasing, rebates, protection plans, insurance offerings and so much more.',
+            button: 'Learn More'
+        }
+    ]
+    const colors = [
+        '#3c2c2a', '#394344', '#2b5b59'
+    ];
+
+    const containerRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            }
+        );
+
+        if (containerRef.current) {
+            observer.observe(containerRef.current);
+        }
+
+        return () => {
+            if (containerRef.current) {
+                observer.unobserve(containerRef.current);
+            }
+        };
+    }, []);
+
+
     return (
-        <div className={"homePage-discoverSection-container"}>
+        <div
+            className={"homePage-discoverSection-container flex flex-col  items-center opacity-0 translate-y-10 transition-all duration-700 ease-out"}
+            ref={containerRef}
+        >
             <div className="homePage-discoverSection-header font-semibold text-[1.5rem] text-center mt-10">
                 Discover Vehicle
             </div>
-            <div className={"flex justify-center"}>
-                <div className={"flex justify-center items-center w-1/3"}>
+            <div className={"flex justify-center w-full"}>
+                <div className={"flex justify-center items-center w-1/2"}>
                     {
-                        ["Featured Stories"," Vehicles & Technology"," Offers & Services"].map((item, i) => (
+                        ["Featured Stories", " Vehicles & Technology", " Offers & Services"].map((item, i) => (
                             <div
-                                className={`p-3 border-b-2 transition ease-in-out duration-300 ${currentItem !== i ? 'border-b-gray-400' : 'border-b-black'}`}
+                                className={`cursor-pointer p-3 border-b-2 transition ease-in-out duration-300 ${currentItem !== i ? 'border-b-gray-400' : 'border-b-black font-semibold'}`}
                                 key={i}
                                 onClick={() => setCurrentItem(i)}
                             >
@@ -563,6 +662,21 @@ const Discover = () => {
                             </div>
                         ))
                     }
+                </div>
+            </div>
+            <div
+                className="homePage-discoverSection-content text-white w-3/4 h-100 flex rounded-xl mt-5 transition ease-in-out duration-700"
+                style={{
+                    backgroundColor: colors[currentItem]
+                }}
+            >
+                <div className={"w-1/2"}>
+                    {/*image*/}
+                </div>
+                <div className={"w-1/2 p-10 flex flex-col items-stretch justify-center"}>
+                    <div className={"mb-2"}>{data[currentItem].header.text}</div>
+                    <div className={"text-[2rem] font-semibold"}>{data[currentItem].header.content}</div>
+                    <div className={"text-[1.2rem] mt-4"}>{data[currentItem].content}</div>
                 </div>
             </div>
         </div>
