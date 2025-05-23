@@ -677,6 +677,33 @@ const Discover = () => {
                     <div className={"mb-2"}>{data[currentItem].header.text}</div>
                     <div className={"text-[2rem] font-semibold"}>{data[currentItem].header.content}</div>
                     <div className={"text-[1.2rem] mt-4"}>{data[currentItem].content}</div>
+                    <button
+                        className={`w-1/4 mt-4 bg-white hover:bg-gray-200 text-black rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 py-3`}>
+                        <div className="font-medium text-xs flex items-center justify-center">
+    <span className={`transition-transform  duration-200 transform group-hover:-translate-x-1 ml-3 text-base font-semibold`}>
+      {data[currentItem].button}
+    </span>
+                            <span
+                                className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+      <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+            d="M10.5 15L13.5 12L10.5 9"
+            stroke={`black`}
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+      </svg>
+    </span>
+                        </div>
+                    </button>
+
                 </div>
             </div>
         </div>
