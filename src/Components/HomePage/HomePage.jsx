@@ -419,7 +419,7 @@ const BeyondZero = () => {
     return (
         <div
             ref={containerRef}
-            className="mt-10 relative"
+            className="mt-10 relative opacity-0 translate-y-10 transition-all duration-700 ease-out"
         >
             <div>
                 <img src="../src/assets/BZ_5120_2489_v2_desktop_p0otu5rLxmyrwsBnkbfNnHP4DcA9GLL.png" alt=""/>
@@ -462,19 +462,109 @@ const BeyondZero = () => {
 const Gallery = () => {
     const colors = [
         '#3c2c2a', '#394344', '#2b5b59', '#a6afaf', '#5d4e41', '#2b5b59', '#43512f', '#676770', '#25363b'
-    ]
+    ];
+
+    const slides = [
+        {
+            id: 0,
+            imageUrl: '../../src/assets/accessories_desktop.png',
+            text: 'All-new drive, fully charged edge.',
+            buttonText: 'Learn More'
+        },
+        {
+            id: 1,
+            imageUrl: '../../src/assets/BZ4_MY26_0010_V001.png',
+            text: 'New. Bold. Nonstop fun.',
+            buttonText: 'Learn More'
+        },
+        {
+            id: 2,
+            imageUrl: '../../src/assets/RPH_MY26_0003_V001.png',
+            text: 'Crafted for serenity and style.',
+            buttonText: 'Learn More'
+        },
+        {
+            id: 3,
+            imageUrl: '../../src/assets/RHV_MY26_0001_V001.png',
+            text: 'Learn more about the expansive Toyota Accessory Portfolio.',
+            buttonText: 'Learn More'
+        }
+    ];
+
     const [backgroundColor, setBackgroundColor] = useState(colors[0]);
-    const onClickChangeBackgroundColor = () => {
+    const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+    const handleSlideChange = (newIndex) => {
+        setCurrentSlideIndex(newIndex);
         setBackgroundColor(colors[Math.floor(Math.random() * colors.length)]);
-    }
+    };
+
+    const currentSlide = slides[currentSlideIndex];
+
     return (
-        <div
-            style={{
-                backgroundColor,
-            }}
-            className={"p-10 transition ease-in-out duration-500"}
-        >
-            <Carousel backgroundColorHandler={onClickChangeBackgroundColor} />
+        <div className="transition-all duration-700 ease-out">
+            <div style={{ backgroundColor }} className="p-10 transition ease-in-out duration-500">
+                <div className="flex justify-center flex-col items-center mt-10">
+                    <div className="text-white font-bold text-[2rem] transition ease-in-out duration-500">
+                        {currentSlide.text}
+                    </div>
+                    <button className="my-5 bg-white hover:bg-gray-200 text-black rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 px-4 py-3">
+                        <div className="font-semibold text-xs flex items-center justify-center">
+                            <span className="transition-transform text-lg duration-200 transform group-hover:-translate-x-1 ml-3 font-semibold">
+                                {currentSlide.buttonText}
+                            </span>
+                            <span className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <svg
+                                    width="25"
+                                    height="25"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M10.5 15L13.5 12L10.5 9"
+                                        stroke="black"
+                                        strokeWidth="1.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                </svg>
+                            </span>
+                        </div>
+                    </button>
+                </div>
+
+                <Carousel
+                    slides={slides}
+                    currentSlideIndex={currentSlideIndex}
+                    onSlideChange={handleSlideChange}
+                />
+            </div>
+        </div>
+    );
+};
+const Discover = () => {
+    const [currentItem, setCurrentItem] = useState(1);
+    return (
+        <div className={"homePage-discoverSection-container"}>
+            <div className="homePage-discoverSection-header font-semibold text-[1.5rem] text-center mt-10">
+                Discover Vehicle
+            </div>
+            <div className={"flex justify-center"}>
+                <div className={"flex justify-center items-center w-1/3"}>
+                    {
+                        ["Featured Stories"," Vehicles & Technology"," Offers & Services"].map((item, i) => (
+                            <div
+                                className={`p-3 border-b-2 transition ease-in-out duration-300 ${currentItem !== i ? 'border-b-gray-400' : 'border-b-black'}`}
+                                key={i}
+                                onClick={() => setCurrentItem(i)}
+                            >
+                                {item}
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
         </div>
     )
 }
@@ -487,6 +577,7 @@ function HomePage() {
             <Tools/>
             <BeyondZero/>
             <Gallery/>
+            <Discover/>
         </div>
     )
 }
