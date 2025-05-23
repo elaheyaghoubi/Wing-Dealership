@@ -7,7 +7,6 @@ import {
 } from "../../Features/carSlice.js";
 import CarCard from "./CarCard.jsx";
 import {Link} from "react-router-dom";
-import Button from "../Shared/Buttons/Button.jsx";
 import Carousel from "../Shared/Carousel/Carousel.jsx";
 
 const Slider = () => {
@@ -300,10 +299,12 @@ const Tools = () => {
             <div className="homePage-tools-header text-center text-[1.5rem] font-semibold">
                 Shopping Tools
             </div>
-            <div className="homePage-tools-content font-bold rounded-lg mt-5 bg-gray-100 p-6 lg:gap-0 gap-6 lg:px-20 lg:w-[70%] grid place-items-center grid-cols-2 items-center lg:flex lg:justify-between lg:items-center">
+            <div
+                className="homePage-tools-content font-bold rounded-lg mt-5 bg-gray-100 p-6 lg:gap-0 gap-6 lg:px-20 lg:w-[70%] grid place-items-center grid-cols-2 items-center lg:flex lg:justify-between lg:items-center">
                 <div className="flex items-center justify-around flex-1">
                     <div className="flex flex-col-reverse items-center justify-between">
-                        <div className="hover:border-black transition ease-in-out duration-500 cursor-pointer border-b-2 border-transparent">
+                        <div
+                            className="hover:border-black transition ease-in-out duration-500 cursor-pointer border-b-2 border-transparent">
                             Build & Price
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 32 32">
@@ -322,7 +323,8 @@ const Tools = () => {
                 </div>
                 <div className="flex items-center justify-around flex-1">
                     <div className="flex flex-col-reverse items-center justify-between">
-                        <div className="hover:border-black transition ease-in-out duration-500 cursor-pointer border-b-2 border-transparent">
+                        <div
+                            className="hover:border-black transition ease-in-out duration-500 cursor-pointer border-b-2 border-transparent">
                             Search Inventory
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 32 32">
@@ -339,7 +341,8 @@ const Tools = () => {
                 </div>
                 <div className="flex items-center justify-around flex-1">
                     <div className="flex flex-col-reverse items-center justify-between">
-                        <div className="hover:border-black transition ease-in-out duration-500 cursor-pointer border-b-2 border-transparent">
+                        <div
+                            className="hover:border-black transition ease-in-out duration-500 cursor-pointer border-b-2 border-transparent">
                             Special Offers
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 32 32">
@@ -364,7 +367,8 @@ const Tools = () => {
                 </div>
                 <div className="flex items-center justify-around flex-1">
                     <div className="flex flex-col-reverse items-center justify-between">
-                        <div className="hover:border-black transition ease-in-out duration-500 cursor-pointer border-b-2 border-transparent">
+                        <div
+                            className="hover:border-black transition ease-in-out duration-500 cursor-pointer border-b-2 border-transparent">
                             Find a Dealer
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 32 32">
@@ -412,9 +416,9 @@ const BeyondZero = () => {
         };
     }, []);
 
-        return(
+    return (
         <div
-            // ref={containerRef}
+            ref={containerRef}
             className="mt-10 relative"
         >
             <div>
@@ -424,19 +428,57 @@ const BeyondZero = () => {
                 <div className={"font-thin text-3xl tracking-widest"}>BEYOND ZERO</div>
                 <div className={"font-semibold text-3xl"}>Drive change your way.</div>
                 <div className={"w-full text-center flex justify-center mt-5 font-bold"}>
-                    <Button px={3} py={3} text={"Explore Beyond Zero"}  backgroundColor={"white"} hoverBackgroundColor={"gray-200"} textColor={"black"} />
+                    <button
+                        className={`bg-white hover:bg-gray-200 text-black rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 px-3 py-3`}>
+                        <div className="font-medium text-xs flex items-center justify-center">
+    <span className={`transition-transform  duration-200 transform group-hover:-translate-x-1 ml-3 font-semibold`}>
+      Explore Beyond Zero
+    </span>
+                            <span
+                                className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+      <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+            d="M10.5 15L13.5 12L10.5 9"
+            stroke={`black`}
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+      </svg>
+    </span>
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>
     )
 }
 const Gallery = () => {
+    const colors = [
+        '#3c2c2a', '#394344', '#2b5b59', '#a6afaf', '#5d4e41', '#2b5b59', '#43512f', '#676770', '#25363b'
+    ]
+    const [backgroundColor, setBackgroundColor] = useState(colors[0]);
+    const onClickChangeBackgroundColor = () => {
+        setBackgroundColor(colors[Math.floor(Math.random() * colors.length)]);
+    }
     return (
-        <div>
-            <Carousel />
+        <div
+            style={{
+                backgroundColor,
+            }}
+            className={"p-10 transition ease-in-out duration-500"}
+        >
+            <Carousel backgroundColorHandler={onClickChangeBackgroundColor} />
         </div>
     )
 }
+
 function HomePage() {
     return (
         <div className={"HomePage-container"}>
@@ -444,6 +486,7 @@ function HomePage() {
             <Explore/>
             <Tools/>
             <BeyondZero/>
+            <Gallery/>
         </div>
     )
 }

@@ -69,14 +69,33 @@ function Footer() {
     return (
         <div className={"footer-container bg-gray-200 mt-15 p-10"}>
             <div className={"flex justify-center gap-4 items-center"}>
-                <Button
-                    px={3}
-                    py={3}
-                    text="Manage Preferences"
-                    backgroundColor="red-500"
-                    hoverBackgroundColor="red-900"
-                    textColor="white"
-                />
+                <button
+                    className={`bg-red-500 hover:bg-red-800 text-white rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 px-3 py-3`}>
+                    <div className="font-medium text-xs flex items-center justify-center">
+    <span className={`transition-transform  duration-200 transform group-hover:-translate-x-1 ml-3 font-semibold`}>
+      Explore Beyond Zero
+    </span>
+                        <span
+                            className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+      <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+            d="M10.5 15L13.5 12L10.5 9"
+            stroke={`white`}
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+      </svg>
+    </span>
+                    </div>
+                </button>
+
 
                 <svg aria-hidden="true" className="cursor-pointer group tcom-icon tcom-social-icon tcom-icon-social-facebook" width="40"
                      height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
