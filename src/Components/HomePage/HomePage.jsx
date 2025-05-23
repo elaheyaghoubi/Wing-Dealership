@@ -8,6 +8,7 @@ import {
 import CarCard from "./CarCard.jsx";
 import {Link} from "react-router-dom";
 import Button from "../Shared/Buttons/Button.jsx";
+import Carousel from "../Shared/Carousel/Carousel.jsx";
 
 const Slider = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -382,8 +383,40 @@ const Tools = () => {
     );
 };
 const BeyondZero = () => {
-    return(
-        <div className={"mt-10 relative"}>
+    const containerRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            }
+        );
+
+        if (containerRef.current) {
+            observer.observe(containerRef.current);
+        }
+
+        return () => {
+            if (containerRef.current) {
+                observer.unobserve(containerRef.current);
+            }
+        };
+    }, []);
+
+        return(
+        <div
+            // ref={containerRef}
+            className="mt-10 relative"
+        >
             <div>
                 <img src="../src/assets/BZ_5120_2489_v2_desktop_p0otu5rLxmyrwsBnkbfNnHP4DcA9GLL.png" alt=""/>
             </div>
@@ -391,10 +424,16 @@ const BeyondZero = () => {
                 <div className={"font-thin text-3xl tracking-widest"}>BEYOND ZERO</div>
                 <div className={"font-semibold text-3xl"}>Drive change your way.</div>
                 <div className={"w-full text-center flex justify-center mt-5 font-bold"}>
-                    <Button px={3} py={3} text={"Explore Beyond Zero"}  backgroundColor={"white"} hoverBackgroundColor={"gray-200"} textColor={"black"} font={"font-semibold"}/>
-
+                    <Button px={3} py={3} text={"Explore Beyond Zero"}  backgroundColor={"white"} hoverBackgroundColor={"gray-200"} textColor={"black"} />
                 </div>
             </div>
+        </div>
+    )
+}
+const Gallery = () => {
+    return (
+        <div>
+            <Carousel />
         </div>
     )
 }
