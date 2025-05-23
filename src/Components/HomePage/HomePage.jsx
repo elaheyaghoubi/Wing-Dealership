@@ -608,7 +608,7 @@ const Discover = () => {
         }
     ]
     const colors = [
-        '#3c2c2a', '#394344', '#2b5b59'
+         '#394344','#676770', '#2b5b59'
     ];
 
     const containerRef = useRef(null);
