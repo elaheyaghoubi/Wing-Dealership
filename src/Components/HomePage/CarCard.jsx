@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-import Button from "../Shared/Buttons/Button.jsx";
 
 function CarCard({car, index}) {
     const {id, year, model, brand, price, engine} = car

@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from "../Buttons/Button.jsx";
 import {Link} from "react-router-dom";
 const navSections = [
     {

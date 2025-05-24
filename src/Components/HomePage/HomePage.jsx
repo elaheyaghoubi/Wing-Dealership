@@ -586,7 +586,12 @@ const Discover = () => {
                 content: 'Schedule Toyota Service'
             },
             content: 'Sign-in and schedule a service appointment online at one of our dealers.',
-            button: 'Schedule Now'
+            button: 'Schedule Now',
+            cards:[
+                {cardHeader: 'Memorial Day Savings', cardContent: 'Enjoy 15% off when you shop Toyota Genuine Parts and Accessories, and Lifestyle Products through 5/26/2025.', cardButton: 'Shop Now'},
+                {cardHeader: 'An Easier Way to Buy Your Next Toyota', cardContent: 'SmartPath helps you find your Toyota, customize terms and finalize your purchase—all online.', cardButton: 'Learn More'},
+                {cardHeader: 'Toyota Rewards Visa Signature®', cardContent: 'Earn more with Toyota Rewards Visa Signature® Credit Card', cardButton: 'Learn More'},
+            ]
         },
         {
             id: 1,
@@ -595,7 +600,13 @@ const Discover = () => {
                 content: 'Toyota Brand'
             },
             content: 'Inspired by what’s possible.',
-            button: 'Learn More'
+            button: 'Learn More',
+            cards:[
+                {cardHeader: 'Connected Services', cardContent: 'Get help with everything from Remote Start * to Roadside Safety * to Service *—all from your smartphone. *', cardButton: 'Get Connected'},
+                {cardHeader: 'Safety Recall Information', cardContent: 'Get information on open safety recalls and service campaigns.', cardButton: 'Get More Info'},
+                {cardHeader: 'Toyota Cares', cardContent: 'Every Toyota comes with a peace-of-mind two years of no cost maintenance and Roadside Assistance. *', cardButton: 'See Details'}
+
+            ]
         },
         {
             id: 2,
@@ -604,7 +615,12 @@ const Discover = () => {
                 content: 'Let’s talk finances',
             },
             content: 'We have options for flexible financing and leasing, rebates, protection plans, insurance offerings and so much more.',
-            button: 'Learn More'
+            button: 'Learn More',
+            cards:[
+                {cardHeader: 'Toyota Rewards Visa Signature®', cardContent: 'Earn more with Toyota Rewards Visa Signature® Credit Card', cardButton: 'Learn More'},
+                {cardHeader: 'College Rebate', cardContent: 'Getting a degree is hard work. We’re here to help you with a break, with our College Rebate and Finance Program.', cardButton: 'Learn More'},
+                {cardHeader: 'Military Rebate', cardContent: 'We truly appreciate all that you do in your life of service, and we’d like to share a small token of our gratitude.', cardButton: 'Learn More'}
+            ]
         }
     ]
     const colors = [
@@ -640,6 +656,7 @@ const Discover = () => {
         };
     }, []);
 
+    // console.log(data[currentItem].cards)
 
     return (
         <div
@@ -703,8 +720,45 @@ const Discover = () => {
     </span>
                         </div>
                     </button>
-
                 </div>
+            </div>
+            <div className="homePage-discoverSection-cards flex justify-between w-full gap-6 lg:w-3/4">
+                {data[currentItem].cards.map((card, i) => (
+                    <div key={i} className={"bg-gray-500 w-1/3 p-5 rounded-lg text-white h-100 mt-10 overflow-hidden group cursor-pointer"}>
+                        <div className={"flex items-start justify-end flex-col h-full"}>
+                            <div>{data[currentItem].header.text}</div>
+                            <div className={"font-bold text-3xl"}>{card.cardHeader}</div>
+                            <div
+                                className={"text-lg hidden group-hover:block"}
+                            >{card.cardContent}</div>
+                            <button className={`lg:w-2/4 w-full mt-4 bg-white hover:bg-gray-200 text-black rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 py-3`}>
+                                <div className="font-medium text-xs flex items-center justify-center">
+    <span className={`transition-transform  duration-200 transform group-hover:-translate-x-1 ml-3 text-base font-semibold`}>
+      {card.cardButton}
+    </span>
+                                    <span
+                                        className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+      <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+            d="M10.5 15L13.5 12L10.5 9"
+            stroke={`black`}
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+      </svg>
+    </span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     )
@@ -719,6 +773,7 @@ function HomePage() {
             <BeyondZero/>
             <Gallery/>
             <Discover/>
+
         </div>
     )
 }
