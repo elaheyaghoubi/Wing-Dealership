@@ -2,7 +2,7 @@ import React from 'react'
 import Button from "../Buttons/Button.jsx";
 import {Link} from "react-router-dom";
 
-function Footer() {
+const DesktopFooter = () => {
     const navSections = [
         {
             title: "SHOPPING TOOLS",
@@ -67,7 +67,7 @@ function Footer() {
         }
     ];
     return (
-        <div className={"footer-container bg-gray-200 mt-15 p-10"}>
+        <div className={"footer-container bg-gray-200 mt-15 p-10 lg:block hidden"}>
             <div className={"flex justify-center gap-4 items-center"}>
                 <button
                     className={`bg-red-500 hover:bg-red-800 text-white rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 px-3 py-3`}>
@@ -152,32 +152,37 @@ function Footer() {
                         fill="black"></path>
                 </svg>
             </div>
-           <div className={"flex justify-between mt-8 items-start "}>
-               {
-                   navSections.map((section, index) => (
-                       <div key={index} className="">
-                           <div className="font-semibold ">
-                               {section.title}
-                           </div>
-                           <div className="space-y-2 font-thin mt-3 flex flex-col items-start">
-                               {section.links.map((link, linkIndex) => (
-                                   <Link to={`${section.title === 'VEHICLE TYPES' ? link : ''}`}
-                                         key={linkIndex}
-                                         href="#"
-                                         className=""
-                                   >
-                                       <div className={"transition ease-in-out duration-300 border-b-2 border-b-transparent hover:border-b-gray-500"}>
-                                           {link}
-                                       </div>
-                                   </Link>
-                               ))}
-                           </div>
-                       </div>
-                   ))
-               }
-           </div>
+            <div className={"flex justify-between mt-8 items-start "}>
+                {
+                    navSections.map((section, index) => (
+                        <div key={index} className="">
+                            <div className="font-semibold ">
+                                {section.title}
+                            </div>
+                            <div className="space-y-2 font-thin mt-3 flex flex-col items-start">
+                                {section.links.map((link, linkIndex) => (
+                                    <Link to={`${section.title === 'VEHICLE TYPES' ? link : ''}`}
+                                          key={linkIndex}
+                                          href="#"
+                                          className=""
+                                    >
+                                        <div className={"transition ease-in-out duration-300 border-b-2 border-b-transparent hover:border-b-gray-500"}>
+                                            {link}
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
         </div>
     )
+}
+function Footer() {
+   return(
+       <DesktopFooter/>
+   )
 }
 
 export default Footer

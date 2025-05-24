@@ -535,14 +535,14 @@ const Gallery = () => {
         <div ref={containerRef} className="opacity-0 translate-y-10 transition-all duration-700 ease-out">
             <div style={{backgroundColor}} className="p-10 transition ease-in-out duration-500">
                 <div className="flex justify-center flex-col items-center mt-10">
-                    <div className="text-white font-bold text-[2rem] transition ease-in-out duration-500">
+                    <div className="text-white font-bold lg:text-[2rem] text-lg text-center transition ease-in-out duration-500">
                         {currentSlide.text}
                     </div>
                     <button
-                        className="my-5 bg-white hover:bg-gray-200 text-black rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 px-4 py-3">
+                        className="my-5 bg-white hover:bg-gray-200 text-black rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 lg:px-4 py-2 lg:py-3">
                         <div className="font-semibold text-xs flex items-center justify-center">
                             <span
-                                className="transition-transform text-lg duration-200 transform group-hover:-translate-x-1 ml-3 font-semibold">
+                                className="transition-transform lg:text-lg  duration-200 transform group-hover:-translate-x-1 ml-3 font-semibold">
                                 {currentSlide.buttonText}
                             </span>
                             <span
@@ -650,11 +650,11 @@ const Discover = () => {
                 Discover Vehicle
             </div>
             <div className={"flex justify-center w-full"}>
-                <div className={"flex justify-center items-center w-1/2"}>
+                <div className={"flex justify-center items-center w-full  lg:w-1/2"}>
                     {
                         ["Featured Stories", " Vehicles & Technology", " Offers & Services"].map((item, i) => (
                             <div
-                                className={`cursor-pointer p-3 border-b-2 transition ease-in-out duration-300 ${currentItem !== i ? 'border-b-gray-400' : 'border-b-black font-semibold'}`}
+                                className={`cursor-pointer p-3 border-b-2 transition ease-in-out duration-300 text-center ${currentItem !== i ? 'border-b-gray-400' : 'border-b-black font-semibold'}`}
                                 key={i}
                                 onClick={() => setCurrentItem(i)}
                             >
@@ -665,20 +665,20 @@ const Discover = () => {
                 </div>
             </div>
             <div
-                className="homePage-discoverSection-content text-white w-3/4 h-100 flex rounded-xl mt-5 transition ease-in-out duration-700"
+                className="homePage-discoverSection-content lg:flex-row flex-col text-white lg:w-3/4 w-[95%] flex rounded-xl mt-5 transition ease-in-out duration-700"
                 style={{
                     backgroundColor: colors[currentItem]
                 }}
             >
-                <div className={"w-1/2"}>
+                <div className={"w-1/2  h-100"}>
                     {/*image*/}
                 </div>
-                <div className={"w-1/2 p-10 flex flex-col items-stretch justify-center"}>
+                <div className={"lg:w-1/2 w-full p-10 flex flex-col items-stretch justify-center"}>
                     <div className={"mb-2"}>{data[currentItem].header.text}</div>
                     <div className={"text-[2rem] font-semibold"}>{data[currentItem].header.content}</div>
                     <div className={"text-[1.2rem] mt-4"}>{data[currentItem].content}</div>
                     <button
-                        className={`w-1/4 mt-4 bg-white hover:bg-gray-200 text-black rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 py-3`}>
+                        className={`lg:w-2/4 w-full mt-4 bg-white hover:bg-gray-200 text-black rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 py-3`}>
                         <div className="font-medium text-xs flex items-center justify-center">
     <span className={`transition-transform  duration-200 transform group-hover:-translate-x-1 ml-3 text-base font-semibold`}>
       {data[currentItem].button}

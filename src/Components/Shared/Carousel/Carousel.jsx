@@ -18,7 +18,7 @@ const Carousel = ({ slides, currentSlideIndex, onSlideChange }) => {
                         className={`flex justify-center ${currentSlideIndex === index ? 'block' : 'hidden'}`}
                     >
                         <img
-                            className="w-1/2 shadow-xl object-contain rounded-sm transition ease-in-out duration-500"
+                            className="lg:w-1/2 shadow-xl object-contain rounded-sm transition ease-in-out duration-500"
                             src={slide.imageUrl}
                             alt=""
                         />
