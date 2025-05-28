@@ -422,7 +422,7 @@ const BeyondZero = () => {
             className="mt-10 relative opacity-0 translate-y-10 transition-all duration-700 ease-out"
         >
             <div>
-                <img src="../src/assets/BZ_5120_2489_v2_desktop_p0otu5rLxmyrwsBnkbfNnHP4DcA9GLL.png" alt=""/>
+                <img className={"w-full"} src="../src/assets/BZ_5120_2489_v2_desktop_p0otu5rLxmyrwsBnkbfNnHP4DcA9GLL.png" alt=""/>
             </div>
             <div className={"absolute text-white z-10 top-1/5 text-center w-full"}>
                 <div className={"font-thin text-3xl tracking-widest"}>BEYOND ZERO</div>
@@ -586,11 +586,12 @@ const Discover = () => {
                 content: 'Schedule Toyota Service'
             },
             content: 'Sign-in and schedule a service appointment online at one of our dealers.',
+            picture: '../../src/assets/TMM_FY24_0104_V001_desktop.avif',
             button: 'Schedule Now',
             cards:[
-                {cardHeader: 'Memorial Day Savings', cardContent: 'Enjoy 15% off when you shop Toyota Genuine Parts and Accessories, and Lifestyle Products through 5/26/2025.', cardButton: 'Shop Now'},
-                {cardHeader: 'An Easier Way to Buy Your Next Toyota', cardContent: 'SmartPath helps you find your Toyota, customize terms and finalize your purchase—all online.', cardButton: 'Learn More'},
-                {cardHeader: 'Toyota Rewards Visa Signature®', cardContent: 'Earn more with Toyota Rewards Visa Signature® Credit Card', cardButton: 'Learn More'},
+                {cardHeader: 'Memorial Day Savings', cardContent: 'Enjoy 15% off when you shop Toyota Genuine Parts and Accessories, and Lifestyle Products through 5/26/2025.', cardButton: 'Shop Now', cardPicture: '../../src/assets/3x4_SmartPath.avif'},
+                {cardHeader: 'An Easier Way to Buy Your Next Toyota', cardContent: 'SmartPath helps you find your Toyota, customize terms and finalize your purchase—all online.', cardButton: 'Learn More',cardPicture: '../../src/assets/3x4_SmartPath.avif'},
+                {cardHeader: 'Toyota Rewards Visa Signature®', cardContent: 'Earn more with Toyota Rewards Visa Signature® Credit Card', cardButton: 'Learn More', cardPicture: '../../src/assets/Toyota_Visa_Signature_v2.avif'},
             ]
         },
         {
@@ -600,11 +601,12 @@ const Discover = () => {
                 content: 'Toyota Brand'
             },
             content: 'Inspired by what’s possible.',
+            picture: '../../src/assets/MUL_MY25_0003_V001_desktop.avif',
             button: 'Learn More',
             cards:[
-                {cardHeader: 'Connected Services', cardContent: 'Get help with everything from Remote Start * to Roadside Safety * to Service *—all from your smartphone. *', cardButton: 'Get Connected'},
-                {cardHeader: 'Safety Recall Information', cardContent: 'Get information on open safety recalls and service campaigns.', cardButton: 'Get More Info'},
-                {cardHeader: 'Toyota Cares', cardContent: 'Every Toyota comes with a peace-of-mind two years of no cost maintenance and Roadside Assistance. *', cardButton: 'See Details'}
+                {cardHeader: 'Connected Services', cardContent: 'Get help with everything from Remote Start * to Roadside Safety * to Service *—all from your smartphone. *', cardButton: 'Get Connected', cardPicture: '../../src/assets/TMM_FY20_0187_V001_3x4.avif'},
+                {cardHeader: 'Safety Recall Information', cardContent: 'Get information on open safety recalls and service campaigns.', cardButton: 'Get More Info', cardPicture: '../../src/assets/TMM_FY21_0057_V001_3x4.avif'},
+                {cardHeader: 'Toyota Cares', cardContent: 'Every Toyota comes with a peace-of-mind two years of no cost maintenance and Roadside Assistance. *', cardButton: 'See Details', cardPicture: '../../src/assets/3x4_ToyotaCare.avif'}
 
             ]
         },
@@ -615,11 +617,12 @@ const Discover = () => {
                 content: 'Let’s talk finances',
             },
             content: 'We have options for flexible financing and leasing, rebates, protection plans, insurance offerings and so much more.',
+            picture: '../../src/assets/16x9_Finance.avif',
             button: 'Learn More',
             cards:[
-                {cardHeader: 'Toyota Rewards Visa Signature®', cardContent: 'Earn more with Toyota Rewards Visa Signature® Credit Card', cardButton: 'Learn More'},
-                {cardHeader: 'College Rebate', cardContent: 'Getting a degree is hard work. We’re here to help you with a break, with our College Rebate and Finance Program.', cardButton: 'Learn More'},
-                {cardHeader: 'Military Rebate', cardContent: 'We truly appreciate all that you do in your life of service, and we’d like to share a small token of our gratitude.', cardButton: 'Learn More'}
+                {cardHeader: 'Toyota Rewards Visa Signature®', cardContent: 'Earn more with Toyota Rewards Visa Signature® Credit Card', cardButton: 'Learn More', cardPicture: '../../src/assets/Toyota_Visa_Signature_v2.avif',},
+                {cardHeader: 'College Rebate', cardContent: 'Getting a degree is hard work. We’re here to help you with a break, with our College Rebate and Finance Program.', cardButton: 'Learn More', cardPicture: '../../src/assets/1120by1492_CollegeRebate_Centered_Version.avif'},
+                {cardHeader: 'Military Rebate', cardContent: 'We truly appreciate all that you do in your life of service, and we’d like to share a small token of our gratitude.', cardButton: 'Learn More', cardPicture: '../../src/assets/1120by1492_MilitaryRebate_v1.avif'}
             ]
         }
     ]
@@ -682,13 +685,18 @@ const Discover = () => {
                 </div>
             </div>
             <div
-                className="homePage-discoverSection-content lg:flex-row flex-col text-white lg:w-3/4 w-[95%] flex rounded-xl mt-5 transition ease-in-out duration-700"
+                className="homePage-discoverSection-content lg:flex-row flex-col mb-3 lg:mb-0 text-white lg:w-3/4 w-[95%] flex rounded-xl mt-5 transition ease-in-out duration-700"
                 style={{
                     backgroundColor: colors[currentItem]
                 }}
             >
                 <div className={"w-1/2  h-100"}>
                     {/*image*/}
+                    <img
+                        src={data[currentItem].picture}
+                        alt=""
+                        className={"h-100 w-full rounded-l-xl"}
+                    />
                 </div>
                 <div className={"lg:w-1/2 w-full p-10 flex flex-col items-stretch justify-center"}>
                     <div className={"mb-2"}>{data[currentItem].header.text}</div>
@@ -722,14 +730,26 @@ const Discover = () => {
                     </button>
                 </div>
             </div>
-            <div className="homePage-discoverSection-cards flex justify-between w-full gap-6 lg:w-3/4">
+            <div className="homePage-discoverSection-cards lg:flex-row flex-col flex items-center lg:justify-between w-full gap-6 lg:w-3/4">
                 {data[currentItem].cards.map((card, i) => (
-                    <div key={i} className={"bg-gray-500 w-1/3 p-5 rounded-lg text-white h-100 mt-10 overflow-hidden group cursor-pointer"}>
-                        <div className={"flex items-start justify-end flex-col h-full"}>
+                    <div
+                        key={i}
+                        // style={{ backgroundImage: `url(${`../../src/assets/${card.cardPicture}`})` }}
+                        className="w-[95%] justify-between relative lg:w-1/3 my-5 rounded-lg group text-white  lg:mt-10 overflow-hidden cursor-pointer bg-cover bg-center"
+                    >
+                        <div>
+                            <img
+                                src={card.cardPicture}
+                                className="rounded-xl group-hover:blur-sm transition group-hover:brightness-50 duration-300"
+                                alt=""
+                            />
+                        </div>
+
+                        <div className={"flex bottom-5 pl-4 w-full absolute items-start justify-end flex-col "}>
                             <div>{data[currentItem].header.text}</div>
                             <div className={"font-bold text-3xl"}>{card.cardHeader}</div>
                             <div
-                                className={"text-lg hidden group-hover:block"}
+                                className={"text-lg pr-10 hidden group-hover:block"}
                             >{card.cardContent}</div>
                             <button className={`lg:w-2/4 w-full mt-4 bg-white hover:bg-gray-200 text-black rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 py-3`}>
                                 <div className="font-medium text-xs flex items-center justify-center">
@@ -773,7 +793,6 @@ function HomePage() {
             <BeyondZero/>
             <Gallery/>
             <Discover/>
-
         </div>
     )
 }

@@ -81,7 +81,7 @@ const DesktopFooter = () => {
                                        href="#"
                                        className=""
                                  >
-                                     <div className={"transition ease-in-out duration-300 border-b-2 border-b-transparent hover:border-b-gray-500"}>
+                                     <div className={"transition ease-in-out duration-300 border-b-1 border-b-transparent hover:border-b-gray-500"}>
                                          {link}
                                      </div>
                                  </Link>
