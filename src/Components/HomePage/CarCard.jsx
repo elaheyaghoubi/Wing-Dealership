@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from "react-router-dom";
 
 function CarCard({car, index}) {
-    const {id, year, model, brand, price, engine} = car
+    const {id, year, model, brand, price, engine, image302x302} = car
     const colors = [
         '#3c2c2a', '#394344', '#2b5b59', '#a6afaf', '#5d4e41', '#2b5b59', '#43512f', '#676770', '#25363b'
     ]

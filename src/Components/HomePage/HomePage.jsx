@@ -589,7 +589,7 @@ const Discover = () => {
             picture: '../../src/assets/TMM_FY24_0104_V001_desktop.avif',
             button: 'Schedule Now',
             cards:[
-                {cardHeader: 'Memorial Day Savings', cardContent: 'Enjoy 15% off when you shop Toyota Genuine Parts and Accessories, and Lifestyle Products through 5/26/2025.', cardButton: 'Shop Now', cardPicture: '../../src/assets/3x4_SmartPath.avif'},
+                {cardHeader: 'Memorial Day Savings', cardContent: 'Enjoy 15% off when you shop Toyota Genuine Parts and Accessories, and Lifestyle Products through 5/26/2025.', cardButton: 'Shop Now', cardPicture: '../../src/assets/3x4_SmartPath.avif', cardLink: '/features/part-center'},
                 {cardHeader: 'An Easier Way to Buy Your Next Toyota', cardContent: 'SmartPath helps you find your Toyota, customize terms and finalize your purchase—all online.', cardButton: 'Learn More',cardPicture: '../../src/assets/3x4_SmartPath.avif'},
                 {cardHeader: 'Toyota Rewards Visa Signature®', cardContent: 'Earn more with Toyota Rewards Visa Signature® Credit Card', cardButton: 'Learn More', cardPicture: '../../src/assets/Toyota_Visa_Signature_v2.avif'},
             ]
@@ -702,14 +702,15 @@ const Discover = () => {
                     <div className={"mb-2"}>{data[currentItem].header.text}</div>
                     <div className={"text-[2rem] font-semibold"}>{data[currentItem].header.content}</div>
                     <div className={"text-[1.2rem] mt-4"}>{data[currentItem].content}</div>
-                    <button
-                        className={`lg:w-2/4 w-full mt-4 bg-white hover:bg-gray-200 text-black rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 py-3`}>
-                        <div className="font-medium text-xs flex items-center justify-center">
+
+                        <button
+                            className={`lg:w-2/4 w-full mt-4 bg-white hover:bg-gray-200 text-black rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 py-3`}>
+                            <div className="font-medium text-xs flex items-center justify-center">
     <span className={`transition-transform  duration-200 transform group-hover:-translate-x-1 ml-3 text-base font-semibold`}>
       {data[currentItem].button}
     </span>
-                            <span
-                                className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <span
+                                    className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
       <svg
           width="20"
           height="20"
@@ -726,8 +727,8 @@ const Discover = () => {
         />
       </svg>
     </span>
-                        </div>
-                    </button>
+                            </div>
+                        </button>
                 </div>
             </div>
             <div className="homePage-discoverSection-cards lg:flex-row flex-col flex items-center lg:justify-between w-full gap-6 lg:w-3/4">
@@ -751,13 +752,17 @@ const Discover = () => {
                             <div
                                 className={"text-lg pr-10 hidden group-hover:block"}
                             >{card.cardContent}</div>
-                            <button className={`lg:w-2/4 w-full mt-4 bg-white hover:bg-gray-200 text-black rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 py-3`}>
-                                <div className="font-medium text-xs flex items-center justify-center">
+                            <Link
+                                to={card.cardLink}
+                                className={"w-full"}
+                            >
+                                <button className={`lg:w-2/4 w-full mt-4 bg-white hover:bg-gray-200 text-black rounded-4xl cursor-pointer flex items-center justify-center group transition-colors duration-300 py-3`}>
+                                    <div className="font-medium text-xs flex items-center justify-center">
     <span className={`transition-transform  duration-200 transform group-hover:-translate-x-1 ml-3 text-base font-semibold`}>
       {card.cardButton}
     </span>
-                                    <span
-                                        className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                        <span
+                                            className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
       <svg
           width="20"
           height="20"
@@ -774,8 +779,9 @@ const Discover = () => {
         />
       </svg>
     </span>
-                                </div>
-                            </button>
+                                    </div>
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 ))}
