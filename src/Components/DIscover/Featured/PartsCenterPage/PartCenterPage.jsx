@@ -39,10 +39,21 @@ function PartCenterPage() {
                 <Carousel/>
             </div>
             <div
-                className={"text-center"}
+                className={"text-center p-7"}
             >
-                <DropDown handler={onChangeSaveTheYear} range={{min: 2015, max: 2025}} />
-                <DropDown handler={onChangeSaveTheModel} list={selectedYear ? models : null} />
+                <div>
+                    <div className={"font-semibold text-xl"}>
+                        Parts Center Online
+                    </div>
+                    <div className={"font-bold text-6xl"}>
+                        Select Your Vehicle
+                    </div>
+                </div>
+                <div className={"m-7"}>
+                    <DropDown handler={onChangeSaveTheYear} range={{min: 2015, max: 2025}}/>
+                    <DropDown handler={onChangeSaveTheModel} list={selectedYear ? models : null}/>
+                </div>
+                <div className={"h-[1px] w-1/2 m-auto bg-gray-300"}></div>
             </div>
 
         </div>

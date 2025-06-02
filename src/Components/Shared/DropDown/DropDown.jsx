@@ -33,7 +33,7 @@ function DropDown({handler, range, list}) {
             name="dropDownMenu"
             defaultValue="2015"
             id=""
-            className={"p-4 border-1 rounded-sm w-1/4"}
+            className={"p-4 border-1 rounded-sm w-1/4 m-4"}
             onChange={handler}
         >
             {range && <option value="" disabled>Year</option>}
