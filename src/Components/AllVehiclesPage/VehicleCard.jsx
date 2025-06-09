@@ -15,7 +15,7 @@ function VehicleCard({car}) {
                     <div>{year}</div>
                     <div className={"flex items-center gap-2 font-semibold text-lg"}>
                         <div>{brand}</div>
-                        <div>{model}</div>
+{/*                         <div>{model}</div> */}
                     </div>
                     <div>
                         <div className={""}>${price}</div>
