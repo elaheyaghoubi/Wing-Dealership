@@ -7,7 +7,7 @@ function VehicleCard({car}) {
 
     return (
         <div className={"VehicleCard bg-white flex flex-col p-7 border-1 rounded-sm border-gray-200 hover:shadow-xl cursor-pointer"}>
-            <div className={"bg-amber-100 h-30"}>
+            <div className={"bg-red-100 h-30"}>
                 {/*image*/}
             </div>
             <div className={"mt-3"}>
