@@ -1,12 +1,52 @@
-# React + Vite
+# 🚘 Wing Dealership — Car Dealership Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive car dealership website called **Wing Dealership**, built with **React.js**, **Tailwind CSS**, and **Vite**. The platform showcases premium cars from various brands like BMW, Audi, Toyota, and more. This project demonstrates strong frontend skills, clean UI, and real-world layout design — perfect for portfolio presentation.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 Live Demo
 
-## Expanding the ESLint configuration
+👉 [Visit the Live Site](https://your-live-site.com)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+- ⚛️ React.js — Component-based architecture
+- 🎨 Tailwind CSS — Utility-first CSS framework
+- ⚡ Vite — Fast development server and optimized builds
+- 📦 npm — Package management
+- 🧭 React Router *(if applicable)*
+
+---
+
+## 🚀 Features
+
+- 🚗 Multi-brand car listings (BMW, Audi, Toyota, etc.)
+- 📱 Fully responsive design (mobile, tablet, desktop)
+- ♻️ Reusable components for UI consistency
+- 🧼 Clean and scalable codebase
+- 🎨 Styled with Tailwind CSS utility classes
+- ⚡ Fast and modern development with Vite
+
+---
+
+## 💻 Installation & Setup
+
+To run the project locally:
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/wing-dealership.git
+cd wing-dealership
+```
+### 2.Install Dependencies
+```
+npm install
+```
+### 3. Start Development Server
+```
+npm run dev
+```
+
