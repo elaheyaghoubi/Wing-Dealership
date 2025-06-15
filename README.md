@@ -43,4 +43,8 @@ npm install
 ```
 npm run dev
 ```
-
+---
+## 🙏 Thank You!
+Thank you for checking out Wing Dealership!
+I hope this project demonstrates my passion for frontend development and UI design.
+Feel free to explore the code, suggest improvements, or reach out if you have any questions.
