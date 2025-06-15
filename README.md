@@ -4,19 +4,13 @@ A responsive car dealership website called **Wing Dealership**, built with **Rea
 
 ---
 
-## 🔗 Live Demo
-
-👉 [Visit the Live Site](https://your-live-site.com)
-
----
-
 ## 🛠️ Tech Stack
 
 - ⚛️ React.js — Component-based architecture
 - 🎨 Tailwind CSS — Utility-first CSS framework
 - ⚡ Vite — Fast development server and optimized builds
 - 📦 npm — Package management
-- 🧭 React Router *(if applicable)*
+- 🧭 React Router 
 
 ---
 
