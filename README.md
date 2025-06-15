@@ -33,7 +33,7 @@ To run the project locally:
 
 ```bash
 git clone https://github.com/yourusername/wing-dealership.git
-cd wing-dealership
+cd Wing Dealership
 ```
 ### 2.Install Dependencies
 ```
